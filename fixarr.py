@@ -1,4 +1,4 @@
-""" FIXARR V1.0.0"""
+""" FIXARR v0.1.0"""
 
 import os
 import time
@@ -932,7 +932,7 @@ if __name__ == "__main__":
     
     colorama.init()
     console = Console()
-    ver = Text("\nVersion: 1.0.0")
+    ver = Text("\nVersion: 0.1.0")
     ver.stylize("bold yellow", 0, 8)
     ver.stylize("yellow", 8, 15)
     console.print("\nFIXARR", style="green_yellow")
