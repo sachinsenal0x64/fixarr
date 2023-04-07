@@ -14,7 +14,7 @@ python3 fixarr.py
 ```
 
 
-For windows:
+For Windows:
 
 ```cmd
 pip install -r requirements.txt
@@ -22,7 +22,7 @@ python fixarr.py
 ```
 
 
-IF YOU WANT TO MAKE RUN AS STANDALONE EXE AND MORE FASTER YOU CAN USE NUITKA TO COMPILE CODE INTO C LANG
+IF YOU WANT TO MAKE RUN AS STANDALONE EXE AND MORE FASTER YOU CAN USE NUITKA TO COMPILE CODE INTO C
 
 ```compile
 
