@@ -5,9 +5,7 @@ Movie &amp; Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)
 
 
 
-```windows
-pip install -r requirements.txt
-python fixarr.py
+
 
 
 
@@ -19,3 +17,8 @@ python3 fixarr.py
 ```mac
 pip3 install -r requirements.txt
 python3 fixarr.py
+
+
+```windows
+pip install -r requirements.txt
+python fixarr.py
