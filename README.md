@@ -15,3 +15,7 @@ python fixarr.py
 pip3 install -r requirements.txt
 python3 fixarr.py
 
+
+```mac
+pip3 install -r requirements.txt
+python3 fixarr.py
