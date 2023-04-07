@@ -16,6 +16,8 @@ pip3 install -r requirements.txt
 python3 fixarr.py
 
 
+For Windows:
+
 
 ```windows
 pip install -r requirements.txt
