@@ -4,7 +4,11 @@
 <h4 align="center"> Movie & Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)</h4>
 
 
-<center>![bg](https://user-images.githubusercontent.com/127573781/230660394-814b3a89-d972-4d84-8a44-f36a96d44aed.png)</center>
+<p style="text-align:center;" align="center">
+  <img align="center" src="[https://avatars.githubusercontent.com/u/92252339?s=200&v=4](https://user-images.githubusercontent.com/127573781/230660394-814b3a89-d972-4d84-8a44-f36a96d44aed.png)" height="20%" width="20%" />
+</p>
+
+
 
 
 ![Screenshot (231)](https://user-images.githubusercontent.com/127573781/230511871-3b343e7d-42a3-4a4e-9f0d-c52e9cb0470f.png)
