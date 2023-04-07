@@ -5,7 +5,7 @@
 
 
 <p style="text-align:center;" align="center">
-  <img align="center" src="[https://avatars.githubusercontent.com/u/92252339?s=200&v=4](https://user-images.githubusercontent.com/127573781/230660394-814b3a89-d972-4d84-8a44-f36a96d44aed.png)" height="20%" width="20%" />
+  <img align="center" src="[https://user-images.githubusercontent.com/127573781/230660394-814b3a89-d972-4d84-8a44-f36a96d44aed.png]" height="20%" width="20%"/>
 </p>
 
 
