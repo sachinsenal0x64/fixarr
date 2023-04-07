@@ -6,9 +6,6 @@ Movie &amp; Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)
 
 
 
-
-
-
 For Linux and macOS:
 
 ```bash
@@ -23,6 +20,18 @@ For windows:
 pip install -r requirements.txt
 python fixarr.py
 ```
+
+
+IF YOU WANT TO MAKE RUN AS STANDALONE EXE AND MORE FASTER YOU CAN USE NUITKA TO COMPILE CODE INTO C LANG
+
+```compile
+
+[install c compiler and clang cli to work this also setup clang env ]
+
+pip install Nuitka
+nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-data-dir=./assets=./assets --onefile --windows-company-name=FIXARR --windows-product-version=1.0.0 --plugin-enable=tk-inter --windows-disable-console fixarr.py
+
+
 
 
 
