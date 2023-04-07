@@ -14,6 +14,18 @@ For Linux and macOS:
 ```bash
 pip3 install -r requirements.txt
 python3 fixarr.py
+```
+
+
+For windows:
+
+```cmd
+pip install -r requirements.txt
+python fixarr.py
+```
 
 
 
+## License
+
+MIT
