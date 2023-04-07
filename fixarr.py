@@ -1,8 +1,7 @@
-""" FIXARR v0.1.0"""
+__author__ = "FIXARR"
 
-import os
-import time
-import shutil
+__version__ = "0.1.0"
+
 import re
 import pathlib
 import requests
