@@ -15,13 +15,10 @@ For Linux :
 
 ```bash
 For Ubuntu or other distros with Apt:
-
 sudo apt-get install python3-tk
 
 For Fedora:
-
 sudo dnf install python3-tkinter
-
 
 pip3 install -r requirements.txt
 python3 fixarr.py
@@ -32,7 +29,6 @@ For macOS :
 ```terminal
 
 brew install python-tk@3.10
-
 pip3 install -r requirements.txt
 python3 fixarr.py
 ```
