@@ -1,12 +1,12 @@
                                                                 
 <h1 align="center"> FIXARR 🎬 </h1>
 
-<h4 align="center"> Movie & Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin) 🎬 </h4>
+<h4 align="center"> Movie & Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)</h4>
 
 
 
-![Jackiza_triangle_rainbow_color_dark_mode_backgreound_classic_lo_447774d7-7360-4e9f-b9d0-7cf5c0b60ed3](https://user-images.githubusercontent.com/127573781/230596627-3c2407f6-2421-45ba-8588-e7613bc5d147.png)
 
+![bg](https://user-images.githubusercontent.com/127573781/230660394-814b3a89-d972-4d84-8a44-f36a96d44aed.png)
 
 
 ![Screenshot (231)](https://user-images.githubusercontent.com/127573781/230511871-3b343e7d-42a3-4a4e-9f0d-c52e9cb0470f.png)
