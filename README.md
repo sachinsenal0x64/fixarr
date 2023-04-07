@@ -1,4 +1,5 @@
-                                                                    # FIXARR
+                                                                
+<h1 align="center"> FIXARR 🍿 </h1>
 
 Movie &amp; Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)
 
