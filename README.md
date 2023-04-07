@@ -27,7 +27,6 @@ python3 fixarr.py
 For macOS :
 
 ```terminal
-
 brew install python-tk@3.10
 pip3 install -r requirements.txt
 python3 fixarr.py
