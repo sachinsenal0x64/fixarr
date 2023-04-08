@@ -391,6 +391,7 @@ def file_rename(file_or_folder):
     ]
 
     for path, dirs, files in os.walk(file_or_folder):
+
         for name in files:
             rename_path = pathlib.PurePath(path, name)
             print(rename_path)
@@ -399,17 +400,9 @@ def file_rename(file_or_folder):
                 [len(files) for path, dirs, files in os.walk(file_or_folder)]
             )
 
-            with tqdm(total=num_files, desc="Renaming : ", unit="File") as pbar:
-                for path, dirs, files in os.walk(file_or_folder):
-                    for name in files:
-                        time.sleep(1)
-                        pbar.update(1)
-                        mv_p = pbar.n / num_files * 100
-                        mv_per = str(int(mv_p))
-                        mv_precent.configure(text=mv_per + "%")
-                        mv_precent.update()
-                        mov_progressbar.set(pbar.n / num_files)
-                        mov_progressbar.update()
+
+            t = num_files
+
 
             # if ext not in name then dont do anything else rename
             if not name.endswith(tuple(ext)):
@@ -489,6 +482,9 @@ def file_rename(file_or_folder):
                             else f"{result}_copy{i}({date}){ext}"
                         )
                         i += 1
+                        
+                    
+
 
                     old_path = os.path.join(path, name)
                     new_path = os.path.join(path, new_name)
@@ -505,6 +501,17 @@ def file_rename(file_or_folder):
 
                     # move files to folders
                     shutil.move(new_path, os.path.join(folder_path, new_name))
+                    
+                    with tqdm(total=i, desc="Renaming : ", unit="File") as pbar:
+                                time.sleep(1)
+                                pbar.update(1)
+                                mv_p = pbar.n / i * 100
+                                pbar.update(0)
+                                mv_per = str(int(mv_p))
+                                mv_precent.configure(text=mv_per + "%")
+                                mv_precent.update()
+                                mov_progressbar.set(pbar.n / i )
+                                mov_progressbar.update()    
 
                     # delete empty folders
                     if not os.listdir(path):
@@ -957,4 +964,3 @@ if __name__ == "__main__":
 
     app.mainloop()
     
-
