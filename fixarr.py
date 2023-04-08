@@ -201,6 +201,7 @@ rmf = tabview_2.add("Delete Done")
 fe = tabview_2.add("Searcher")
 
 
+
 class BrowseDialog(simpledialog.Dialog):
     def body(self, master):
         self.var = tk.StringVar()
