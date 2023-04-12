@@ -34,6 +34,8 @@ For macOS :
 brew install python-tk@3.10
 pip3 install -r requirements.txt
 python3 fixarr.py
+
+#or just run .bat File you even can create bat_shortcut
 ```
 
 For Windows:
