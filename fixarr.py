@@ -515,8 +515,8 @@ def file_rename(file_or_folder):
                                 mov_progressbar.update()    
 
                     # delete empty folders
-                    if not os.listdir(folder_path):
-                        shutil.rmtree(old_path)
+                    if not os.listdir(path):
+                        shutil.rmtree(path)
 
                     TOTAL_FILES_RENAMED += 1
                     time.sleep(2)
