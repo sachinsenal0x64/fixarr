@@ -423,18 +423,21 @@ def file_rename(file_or_folder):
                         year_match.group(1)
                         .split("- ")[-1]
                         .split("= ")[-1]
-                        .replace(".", " ")
-                        .replace("_", " ")
-                        .replace("-", " ")
-                        .strip()
+                        .split(" – ")[-1]
+                        .replace(".", " ").strip()
+                        .replace("_", " ").strip()
+                        .replace("-", " ").strip()
+                        
                     )
 
+                    print(movie_title)
                     year = year_match.group(2)
 
                 else:
                     # If the year is not present, set it to an empty string
                     year = ""
-                    movie_title = base_name.replace(".", " ").replace("_", " ").strip()
+                    movie_title = base_name.replace(".", " ").replace("_", " ").replace(" - ","").strip()
+                    print(movie_title)
 
                 # Add the year parameter to the movie db API URL
                 url = f"https://api.themoviedb.org/3/search/movie?{urlencode({'api_key':API_KEY,'query':movie_title,'year':year,'include_adult':True,'with_genres':0})}"
@@ -515,8 +518,8 @@ def file_rename(file_or_folder):
                                 mov_progressbar.update()    
 
                     # delete empty folders
-                    if not os.listdir(path):
-                        shutil.rmtree(path)
+                    if not os.listdir(folder_path):
+                        shutil.rmtree(old_path)
 
                     TOTAL_FILES_RENAMED += 1
                     time.sleep(2)
