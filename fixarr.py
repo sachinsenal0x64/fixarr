@@ -478,17 +478,6 @@ def file_rename(file_or_folder):
                     )
 
                     i = 1
-                    while os.path.exists(os.path.join(file_or_folder, new_name)):
-                        # If the new file name already exists, append a number to it to make it unique
-                        new_name = (
-                            f"{result}_copy{i}({date}){ext}"
-                            if year
-                            else f"{result}_copy{i}({date}){ext}"
-                        )
-                        i += 1
-                        
-                    
-
 
                     old_path = os.path.join(path, name)
                     new_path = os.path.join(path, new_name)
@@ -503,10 +492,25 @@ def file_rename(file_or_folder):
                     if not os.path.exists(folder_path):
                         os.makedirs(folder_path)
 
-                    # move files to folders
-                    shutil.move(new_path, os.path.join(folder_path, new_name))
+
+                    # move renamed file to folder
+                    dest_path = os.path.join(folder_path, new_name)
+                    try:
+                        shutil.move(new_path, dest_path)
+                    except shutil.Error:
+                        # failed to move file to folder, restore original filename
+                        os.rename(new_path, old_path)
+                        return
+
+                    # delete original file if it exists and is not the same as the destination file
+                    if os.path.exists(old_path) and os.path.realpath(old_path) != os.path.realpath(dest_path):
+                        os.remove(old_path)
+
+                    # delete original folder if it is now empty
+                    if not os.listdir(path):
+                        os.rmdir(path)
                     
-                    with tqdm(total=i, desc="Renaming : ", unit="File") as pbar:
+                    with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
                                 time.sleep(1)
                                 pbar.update(1)
                                 mv_p = pbar.n / i * 100
@@ -516,10 +520,7 @@ def file_rename(file_or_folder):
                                 mv_precent.update()
                                 mov_progressbar.set(pbar.n / i )
                                 mov_progressbar.update()    
-
-                    # delete empty folders
-                    if not os.listdir(folder_path):
-                        shutil.rmtree(old_path)
+                        
 
                     TOTAL_FILES_RENAMED += 1
                     time.sleep(2)
@@ -967,4 +968,3 @@ if __name__ == "__main__":
     stop_flag = False
 
     app.mainloop()
-    
