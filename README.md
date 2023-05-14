@@ -27,7 +27,7 @@ sudo dnf install python3-tkinter
 pip3 install -r requirements.txt
 python3 fixarr.py
 ```
-
+<br>  
 For macOS :
 
 ```terminal
@@ -37,7 +37,7 @@ python3 fixarr.py
 
 or just run .bat File also you can create bat_shortcut
 ```
-
+<br>
 For Windows:
 
 ```cmd
@@ -45,13 +45,13 @@ pip install -r requirements.txt
 python fixarr.py
 ```
 
-
+<br>
 
 IF YOU WANT TO MAKE STANDALONE AND RUN AS EXE AND MORE FASTER YOU CAN USE NUITKA TO COMPILE CODE INTO C
 
 
 ```compile
-
+<br>
 [Install C Compiler and Clang Cli to work with this also setup clang env in your os ]
 
 pip install Nuitka
