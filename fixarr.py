@@ -1,8 +1,7 @@
-""" FIXARR v0.1.0"""
+__author__ = "FIXARR"
 
-import os
-import time
-import shutil
+__version__ = "0.1.0"
+
 import re
 import pathlib
 import requests
@@ -202,6 +201,7 @@ rmf = tabview_2.add("Delete Done")
 fe = tabview_2.add("Searcher")
 
 
+
 class BrowseDialog(simpledialog.Dialog):
     def body(self, master):
         self.var = tk.StringVar()
@@ -392,6 +392,7 @@ def file_rename(file_or_folder):
     ]
 
     for path, dirs, files in os.walk(file_or_folder):
+
         for name in files:
             rename_path = pathlib.PurePath(path, name)
             print(rename_path)
@@ -400,17 +401,9 @@ def file_rename(file_or_folder):
                 [len(files) for path, dirs, files in os.walk(file_or_folder)]
             )
 
-            with tqdm(total=num_files, desc="Renaming : ", unit="File") as pbar:
-                for path, dirs, files in os.walk(file_or_folder):
-                    for name in files:
-                        time.sleep(1)
-                        pbar.update(1)
-                        mv_p = pbar.n / num_files * 100
-                        mv_per = str(int(mv_p))
-                        mv_precent.configure(text=mv_per + "%")
-                        mv_precent.update()
-                        mov_progressbar.set(pbar.n / num_files)
-                        mov_progressbar.update()
+
+            t = num_files
+
 
             # if ext not in name then dont do anything else rename
             if not name.endswith(tuple(ext)):
@@ -430,18 +423,21 @@ def file_rename(file_or_folder):
                         year_match.group(1)
                         .split("- ")[-1]
                         .split("= ")[-1]
-                        .replace(".", " ")
-                        .replace("_", " ")
-                        .replace("-", " ")
-                        .strip()
+                        .split(" – ")[-1]
+                        .replace(".", " ").strip()
+                        .replace("_", " ").strip()
+                        .replace("-", " ").strip()
+                        
                     )
 
+                    print(movie_title)
                     year = year_match.group(2)
 
                 else:
                     # If the year is not present, set it to an empty string
                     year = ""
-                    movie_title = base_name.replace(".", " ").replace("_", " ").strip()
+                    movie_title = base_name.replace(".", " ").replace("_", " ").replace(" - ","").strip()
+                    print(movie_title)
 
                 # Add the year parameter to the movie db API URL
                 url = f"https://api.themoviedb.org/3/search/movie?{urlencode({'api_key':API_KEY,'query':movie_title,'year':year,'include_adult':True,'with_genres':0})}"
@@ -482,14 +478,6 @@ def file_rename(file_or_folder):
                     )
 
                     i = 1
-                    while os.path.exists(os.path.join(file_or_folder, new_name)):
-                        # If the new file name already exists, append a number to it to make it unique
-                        new_name = (
-                            f"{result}_copy{i}({date}){ext}"
-                            if year
-                            else f"{result}_copy{i}({date}){ext}"
-                        )
-                        i += 1
 
                     old_path = os.path.join(path, name)
                     new_path = os.path.join(path, new_name)
@@ -504,12 +492,35 @@ def file_rename(file_or_folder):
                     if not os.path.exists(folder_path):
                         os.makedirs(folder_path)
 
-                    # move files to folders
-                    shutil.move(new_path, os.path.join(folder_path, new_name))
 
-                    # delete empty folders
+                    # move renamed file to folder
+                    dest_path = os.path.join(folder_path, new_name)
+                    try:
+                        shutil.move(new_path, dest_path)
+                    except shutil.Error:
+                        # failed to move file to folder, restore original filename
+                        os.rename(new_path, old_path)
+                        return
+
+                    # delete original file if it exists and is not the same as the destination file
+                    if os.path.exists(old_path) and os.path.realpath(old_path) != os.path.realpath(dest_path):
+                        os.remove(old_path)
+
+                    # delete original folder if it is now empty
                     if not os.listdir(path):
-                        shutil.rmtree(path)
+                        os.rmdir(path)
+                    
+                    with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
+                                time.sleep(1)
+                                pbar.update(1)
+                                mv_p = pbar.n / i * 100
+                                pbar.update(0)
+                                mv_per = str(int(mv_p))
+                                mv_precent.configure(text=mv_per + "%")
+                                mv_precent.update()
+                                mov_progressbar.set(pbar.n / i )
+                                mov_progressbar.update()    
+                        
 
                     TOTAL_FILES_RENAMED += 1
                     time.sleep(2)
@@ -957,5 +968,3 @@ if __name__ == "__main__":
     stop_flag = False
 
     app.mainloop()
-    
-
