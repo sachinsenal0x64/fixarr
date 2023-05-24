@@ -75,7 +75,7 @@ For Windows :
 
 ```compile
 
-[Install C Compiler  (http://www.codeblocks.org/downloads/binaries/) and download (including compiler) setup & to work with this also setup GCC env path in your os ] 
+[Install C Compiler  (http://www.codeblocks.org/downloads/binaries/) and download (including compiler) setup & to work with this setup GCC env path (C:\Program Files\CodeBlocks\MinGW\bin) in your OS SYSTEM ENV ] 
 
 open your cmd in Fixarr PATH
 
