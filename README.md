@@ -75,7 +75,7 @@ For Windows :
 
 ```compile
 
-[Install C Compiler  (http://www.codeblocks.org/downloads/binaries/) to work with this also setup GCC env path in your os ] 
+[Install C Compiler  (http://www.codeblocks.org/downloads/binaries/) and download (including compiler) setup & to work with this also setup GCC env path in your os ] 
 
 open your cmd in Fixarr PATH
 
