@@ -18,7 +18,7 @@
 For Linux :
 
 ```bash
-For Ubuntu or other distros with Apt:
+For Ubuntu or other distros with APT:
 sudo apt-get install python3-tk
 
 For Fedora:
