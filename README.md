@@ -25,6 +25,9 @@ sudo apt-get install software-properties-common
 sudo apt-get install python3.10
 sudo apt-get install python3-tk
 
+pip3 install -r requirements.txt
+python3 fixarr.py
+
 For Fedora:
 
 sudo dnf install python3
@@ -32,6 +35,7 @@ sudo dnf install python3-tkinter
 
 pip3 install -r requirements.txt
 python3 fixarr.py
+
 ```
 
 For macOS :
