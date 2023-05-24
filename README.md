@@ -17,8 +17,10 @@
 
 For Linux :
 
-```bash
-For Ubuntu or other distros with APT:
+```Terminal
+
+For Ubuntu And Other Debian Based Distro With APT:
+
 sudo apt-get install python3-tk
 
 For Fedora:
@@ -31,7 +33,10 @@ python3 fixarr.py
 For macOS :
 
 
-```terminal
+```Terminal
+
+For Mac OS With BREW:
+
 brew install python-tk@3.10
 pip3 install -r requirements.txt
 python3 fixarr.py
@@ -43,7 +48,9 @@ or just run .bat File also you can create bat_shortcut
 For Windows:
 
 
-```cmd
+```CMD
+First Install Python  
+
 pip install -r requirements.txt
 python fixarr.py
 ```
