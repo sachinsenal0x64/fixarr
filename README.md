@@ -21,9 +21,13 @@ For Linux :
 
 For Ubuntu And Other Debian Based Distro With APT:
 
+sudo apt-get install software-properties-common
+sudo apt-get install python3.10
 sudo apt-get install python3-tk
 
 For Fedora:
+
+sudo dnf install python3
 sudo dnf install python3-tkinter
 
 pip3 install -r requirements.txt
