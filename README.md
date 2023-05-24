@@ -41,6 +41,9 @@ For macOS :
 
 For Mac OS With BREW:
 
+if your already not install brew then install its from offical site : https://brew.sh/#install 
+
+brew install python3
 brew install python-tk@3.10
 pip3 install -r requirements.txt
 python3 fixarr.py
