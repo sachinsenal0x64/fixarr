@@ -17,21 +17,37 @@
 
 For Linux :
 
-```bash
-For Ubuntu or other distros with Apt:
+```Terminal
+
+For Ubuntu And Other Debian Based Distro With APT:
+
+sudo apt-get install software-properties-common
+sudo apt-get install python3.10
 sudo apt-get install python3-tk
 
+pip3 install -r requirements.txt
+python3 fixarr.py
+
 For Fedora:
+
+sudo dnf install python3
 sudo dnf install python3-tkinter
 
 pip3 install -r requirements.txt
 python3 fixarr.py
+
 ```
 
 For macOS :
 
 
-```terminal
+```Terminal
+
+For Mac OS With BREW:
+
+if your already not install brew then install its from offical site : https://brew.sh/#install 
+
+brew install python3
 brew install python-tk@3.10
 pip3 install -r requirements.txt
 python3 fixarr.py
@@ -43,7 +59,9 @@ or just run .bat File also you can create bat_shortcut
 For Windows:
 
 
-```cmd
+```CMD
+First Install Python  
+
 pip install -r requirements.txt
 python fixarr.py
 ```
@@ -57,13 +75,14 @@ For Windows :
 
 ```compile
 
-[Install C Compiler  (http://www.codeblocks.org/downloads/binaries/) to work with this also setup GCC env path in your os ] 
+[Install C Compiler  (http://www.codeblocks.org/downloads/binaries/) and download (including compiler) setup & to work with this setup GCC env path (C:\Program Files\CodeBlocks\MinGW\bin) in your OS SYSTEM ENV ] 
 
 open your cmd in Fixarr PATH
 
 pip -v install nuitka 
 
-nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-data-dir=./assets=./assets --onefile --windows-company-name=FIXARR --windows-product-version=0.1.0 --plugin-enable=tk-inter fixarr.py
+nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-data-dir=./assets=./assets --onefile --windows-company-name=FIXARR --product-name=FIXARR --product-version=0.1.0  --file-version=0.1.0 --plugin-enable=tk-inter fixarr.py
+
 ```
 
 ## 🏮 NOTE
