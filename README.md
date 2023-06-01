@@ -5,7 +5,7 @@
 
 
 <p style="text-align:center;" align="center">
-  <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/20230518/230660856-13721628-6b2c-4f25-bb9d-ea1f9ee82f0d.5cisrzqkiuw0.webp" height="50%" width="50%" />
+  <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/20230518/230660856-13721628-6b2c-4f25-bb9d-ea1f9ee82f0d.5cisrzqkiuw0.webp" height="80%" width="80%" />
 </p>
 
 
