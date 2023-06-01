@@ -5,7 +5,7 @@
 
 
 <p style="text-align:center;" align="center">
-  <img align="center" src="https://user-images.githubusercontent.com/127573781/230660856-13721628-6b2c-4f25-bb9d-ea1f9ee82f0d.png" height="40%" width="40%" />
+  <img align="center" src="ttps://github.com/sachinsenal0x64/IMAGE-HOSTING/blob/20602278c587f4a6902c1a0337d89147e22c0a58/FIXARR%20LOGO.png" height="40%" width="40%" />
 </p>
 
 
