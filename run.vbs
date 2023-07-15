@@ -1,6 +1,6 @@
 Set WshShell = CreateObject("WScript.Shell")
 
-' Command to mount rclone remote
+' Command to run fixarr app
 fixarrCommand = "python fixarr.py"
 
 ' Run the command without displaying the console window
