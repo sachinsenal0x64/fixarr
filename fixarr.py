@@ -341,6 +341,8 @@ def browse():
     return None
 
 
+# Movie Renamer
+
 def file_rename(file_or_folder):
     start_time = time.perf_counter()
 
@@ -550,6 +552,13 @@ def file_rename(file_or_folder):
     )
 
 
+# TV RENAMER
+
+def tv_renamer(file_or_folder):
+    pass
+    
+
+
 def backup():
     start = time.perf_counter()
     TOTAL_BACKUP = 0
@@ -719,6 +728,21 @@ def start_processing():
     processing_thread.start()
 
 
+
+
+def start_processing_tv():
+    global processing_thread
+
+    # check if a thread is already running
+    if processing_thread and processing_thread.running:
+        # if so, stop the thread
+        processing_thread.stop()
+
+    # start a new thread for processing
+    processing_thread = ProcessingThread(target_function=browse)
+    processing_thread.start()
+
+
 def start_del():
     global processing_thread
     # check if a thread is already running
@@ -834,6 +858,7 @@ button_3 = ctk.CTkButton(
     image=image_3,
     compound="left",
     font=("Segeo UI", 20),
+    command=start_processing_tv
 )
 
 button_3.pack(side="left", padx=20, pady=20, expand=True)
