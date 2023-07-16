@@ -26,6 +26,7 @@
 -  ❄ EMBY BACKUP (⭕ in progress)
 -  ⏬ MOVIE & TV SEACHER (⭕ in progress)
 
+<br>
 
 
 ## 💡 Pros
@@ -35,7 +36,6 @@
 - 🧰 All in One Place
 - 🧾 Easy to Use
   
-
 <br>
 
 
@@ -44,7 +44,9 @@
 - 🐌 Slowly Develop
 
 
+
 <br>
+
 
 # 📐 INSTALLATION
 
