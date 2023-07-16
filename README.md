@@ -63,7 +63,7 @@
 
 ```Terminal
 
-Ubuntu or Any Other Debian Based Distro :
+🐧 Ubuntu or Any Other Debian Based Distro :
 
 sudo apt-get install software-properties-common
 sudo apt-get install python3.10
@@ -72,7 +72,7 @@ sudo apt-get install python3-tk
 pip3 install -r requirements.txt
 python3 fixarr.py
 
-Fedora:
+🐧 Fedora:
 
 sudo dnf install python3
 sudo dnf install python3-tkinter
@@ -90,7 +90,7 @@ python3 fixarr.py
 
 For Mac OS With BREW:
 
-if your already not install brew then install its from offical site : https://brew.sh/#install 
+if you already not install brew then install its from offical site : https://brew.sh/#install 
 
 brew install python3
 brew install python-tk@3.10
