@@ -91,7 +91,7 @@ nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-d
 
 ## 🏮 NOTE
 
-# Some Features are Still in Development :)
+## 🚀 Some Features are Still in Development :)
 
 ## License
 
