@@ -15,7 +15,6 @@
 
 <br>
 
-
 ##  🚀 Features
 
 -  🎬 MOVIE RENAMER
@@ -44,6 +43,13 @@
 
 - 🐌 Slowly Develop
 
+
+<br>
+
+
+## 🏮 NOTE
+
+## 🚀 Some Features are Still in Development :)
 
 
 <br>
@@ -122,10 +128,16 @@ pip -v install nuitka
 nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-data-dir=./assets=./assets --windows-company-name=FIXARR --product-name=FIXARR --product-version=0.1.0  --file-version=0.1.0 --plugin-enable=tk-inter fixarr.py
 
 ```
+<br>
 
-## 🏮 NOTE
+## 💡 CREDITS
 
-## 🚀 Some Features are Still in Development :)
+<p style="text-align:center;" align="center">
+   <a href="https://www.themoviedb.org">
+  <img align="center" src="https://github.com/FIXARR/FIXARR/blob/279c46c7744bfdbb2e99dd802637cea65d2fdc3d/assets/tmdb.svg" height="200"/>
+   </a>
+</p>
+
 
 ## License
 
