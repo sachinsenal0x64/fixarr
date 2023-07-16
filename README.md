@@ -17,6 +17,8 @@
 
 # 📐 INSTALLATION
 
+<br>
+
 For Linux :
 
 ```Terminal
