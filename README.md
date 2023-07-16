@@ -15,16 +15,20 @@
 
 <br>
 
-💡 Pros
+## 💡 Pros
 
-🍕 Accurate (Torrent Movies Also Can Rename Without Any issue)
-🆓 Fully Free And Open Source
-🧰 All in One Place
+- 🍕 Accurate Results
+- 🆓 Fully Free And Open Source
+- 🧰 All in One Place
+  
+
+<br>
 
 
-👎 Cons
+## 👎 Cons
 
-🐌 Slowly Develop
+- 🐌 Slowly Develop
+
 
 <br>
 
