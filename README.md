@@ -21,9 +21,11 @@
 -  🎬 MOVIE RENAMER
 -  📺 TV RENAMER (⭕ in progress)
 -  🔺 PLEX BACKUP
--  🐟 JELLYFIN BACKUP (⭕ in progress)
--  ⏬ MOVIE & TV SEACHER (⭕ in progress)
 -  ⚡️ MULTI THREADING 
+-  🐟 JELLYFIN BACKUP (⭕ in progress)
+-  ❄ EMBY BACKUP (⭕ in progress)
+-  ⏬ MOVIE & TV SEACHER (⭕ in progress)
+
 
 
 ## 💡 Pros
