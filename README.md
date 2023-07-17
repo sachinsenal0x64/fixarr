@@ -1,33 +1,29 @@
-                                                                
 <h1 align="center"> 🛠️ FIXARR  </h1>
 
 <h4 align="center"> Movie & Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)</h4>
-
 
 <p style="text-align:center;" align="center">
   <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/FIXARR LOGO.10it15i3tejk.webp"/>
 </p>
 
-
-# 🛠️ FIXARR 
+# 🛠️ FIXARR
 
 ![Screenshot (231)](https://user-images.githubusercontent.com/127573781/230511871-3b343e7d-42a3-4a4e-9f0d-c52e9cb0470f.png)
 
 <br>
 
-##  🚀 Features
+## 🚀 Features
 
--  🎬 MOVIE RENAMER
--  📺 TV RENAMER (⭕ in progress)
--  🔺 PLEX BACKUP
--  ⚡️ MULTI THREADING 
--  🐟 JELLYFIN BACKUP (⭕ in progress)
--  ❄ EMBY BACKUP (⭕ in progress)
--  ⏬ MOVIE & TV SEACHER (⭕ in progress)
--  ♻ PURG UNNECESSARY FILES (NFO,SRT)
+- 🎬 MOVIE RENAMER
+- 📺 TV RENAMER (⭕ in progress)
+- 🔺 PLEX BACKUP
+- ⚡️ MULTI THREADING
+- 🐟 JELLYFIN BACKUP (⭕ in progress)
+- ❄ EMBY BACKUP (⭕ in progress)
+- ⏬ MOVIE & TV SEACHER (⭕ in progress)
+- ♻ PURG UNNECESSARY FILES (NFO,SRT)
 
 <br>
-
 
 ## 💡 Pros
 
@@ -35,25 +31,20 @@
 - 🆓 Fully Free And Open Source
 - 🧰 All in One Place
 - 🧾 Easy to Use
-  
-<br>
 
+<br>
 
 ## 👎 Cons
 
 - 🐌 Slowly Develop
 
-
 <br>
-
 
 ## 🏮 NOTE
 
 ## 🚀 Some Features are Still in Development :)
 
-
 <br>
-
 
 # 📐 INSTALLATION
 
@@ -81,10 +72,10 @@ pip3 install -r requirements.txt
 python3 fixarr.py
 
 ```
+
 <br>
 
 🍎 For macOS :
-
 
 ```Terminal
 
@@ -104,19 +95,22 @@ or just run .bat File also you can create bat_shortcut
 
 🚪 For Windows:
 
-
 ```CMD
 First Install Python  
 
 pip install -r requirements.txt
 python fixarr.py
 ```
+
+<br>
+
+## 🏮 NOTE
+
 <br>
 
 IF YOU WANT TO MAKE OWN STANDALONE EXE USE NUITKA TO COMPILE SOURCE CODE INTO C AFTER ITS CAN RUN AS EXE.  OR  YOU CAN JUST DOWNLOAD PRE BUILD INSTALLER FROM [RELEASES](https://github.com/sachinsenal0x64/FIXARR/releases)
 
 <br>
-
 
 ```compile
 
@@ -139,7 +133,6 @@ nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-d
   <img align="center" src="https://github.com/FIXARR/FIXARR/blob/279c46c7744bfdbb2e99dd802637cea65d2fdc3d/assets/tmdb.svg" height="200"/>
    </a>
 </p>
-
 
 ## License
 
