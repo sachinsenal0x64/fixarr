@@ -188,7 +188,7 @@ image_7 = ctk.CTkImage(
 
 bu = tabview.add("Backup")
 mv = tabview.add("Movie/Renamer")
-tabview.add("TV/Renamer")
+tv = tabview.add("TV/Renamer")
 tabview.add("Delete")
 
 
@@ -318,7 +318,6 @@ def deletes(result):
 
 def browse():
     result = filedialog.askdirectory()
-
     if result:
         file_rename(result)
         if os.path.isfile(result):
@@ -555,7 +554,78 @@ def file_rename(file_or_folder):
 # TV RENAMER
 
 def tv_renamer(file_or_folder):
-    pass
+    
+    start_time = time.perf_counter()
+
+    TOTAL_FILES_DELETED = 0
+    TOTAL_FOLDERS_DELETED = 0
+    TOTAL_FILES_ADDED = 0
+    TOTAL_FILES_RENAMED = 0
+
+    API_KEY = "6001ceb85e9ef2c42ab120589d2ffe68"
+
+    ext = [
+        ".webm",
+        ".mkv",
+        ".flv",
+        ".vob",
+        ".ogv",
+        ".ogg",
+        ".rrc",
+        ".gifv",
+        ".mng",
+        ".mov",
+        ".avi",
+        ".qt",
+        ".wmv",
+        ".yuv",
+        ".rm",
+        ".asf",
+        ".amv",
+        ".mp4",
+        ".m4p",
+        ".m4v",
+        ".mpg",
+        ".mp2",
+        ".mpeg",
+        ".mpe",
+        ".mpv",
+        ".m4v",
+        ".svi",
+        ".3gp",
+        ".3g2",
+        ".mxf",
+        ".roq",
+        ".nsv",
+        ".flv",
+        ".f4v",
+        ".f4p",
+        ".f4a",
+        ".f4b",
+        ".mod",
+    ]
+
+    for path, dirs, files in os.walk(file_or_folder):
+
+        for name in files:
+            rename_path = pathlib.PurePath(path, name)
+            print(rename_path)
+
+            num_files = sum(
+                [len(files) for path, dirs, files in os.walk(file_or_folder)]
+            )
+
+
+            t = num_files
+            
+                        # if ext not in name then dont do anything else rename
+            if not name.endswith(tuple(ext)):
+                continue
+
+            else:
+                # Extract the file name and extension from the file path
+                base_name, ext = os.path.splitext(name)
+                print(base_name)
     
 
 
@@ -854,7 +924,7 @@ button_2.grid(row=1, column=0, padx=25, pady=55, sticky="nsew")
 
 button_3 = ctk.CTkButton(
     tabview.tab("TV/Renamer"),
-    text="TV |  IMDB ",
+    text="TV |  TMDB ",
     image=image_3,
     compound="left",
     font=("Segeo UI", 20),
@@ -963,6 +1033,18 @@ mov_progressbar.configure(progress_color="green")
 mov_progressbar.place(relx=0.12, rely=0.25)
 
 mov_progressbar.set(0)
+
+
+tv_precent = ctk.CTkLabel(tv, text="0%")
+tv_precent.place(relx=0.45, rely=0.20)
+
+tv_progressbar = ctk.CTkProgressBar(tv, orientation="horizontal", mode="determinate")
+tv_progressbar.configure(progress_color="green")
+tv_progressbar.place(relx=0.12, rely=0.25)
+
+tv_progressbar.set(0)
+
+
 
 
 if __name__ == "__main__":
