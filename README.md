@@ -6,7 +6,7 @@
   <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/FIXARR LOGO.10it15i3tejk.webp"/>
 </p>
 
-# 🛠️ FIXARR POWERD BY AI
+# 🛠️ FIXARR POWERD BY AI 🤖
 
 ![Screenshot (231)](https://user-images.githubusercontent.com/127573781/230511871-3b343e7d-42a3-4a4e-9f0d-c52e9cb0470f.png)
 
