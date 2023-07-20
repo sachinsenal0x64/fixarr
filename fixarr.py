@@ -331,7 +331,7 @@ def browse():
     result = filedialog.askdirectory()
     if result:
         file_rename(result)
-        if os.path.isfile(result):
+        if os.path.isfile(result) :
             file_folder_listbox.configure(state="normal")
             file_folder_listbox.insert("end", result)
             file_folder_listbox.configure(state="disabled")
@@ -349,6 +349,7 @@ def browse():
 
         return result
     return None
+
 
 
 def tv_browse():
@@ -378,6 +379,7 @@ def tv_browse():
 # Movie Renamer
 
 def file_rename(file_or_folder):
+    
     start_time = time.perf_counter()
 
     TOTAL_FILES_DELETED = 0
@@ -454,6 +456,7 @@ def file_rename(file_or_folder):
                 year_match = re.search(
                     r"^(.+?)(?=\s?(?:\()?(\d{4})(?:\))?\s?)", base_name, re.IGNORECASE
                 )
+                
                 if year_match:
                     # Extract the movie title and year from the file name
                     movie_title = (
