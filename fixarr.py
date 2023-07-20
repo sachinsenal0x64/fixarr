@@ -567,87 +567,93 @@ def file_rename(file_or_folder):
                     
                     tool = BraveSearch.from_api_key(api_key=brave_api, search_kwargs={"count": 1})
                     
-                    res = tool.run(base_name)
+                    res = tool.run(base_name + "movie")
                         
                         
                     question  = f"{res} "
+                    
+                    if question == []:
+                        print("Not Found")
                         
-                    rich.print(question)
-                
+                        
+                    else:  
+                        rich.print(question)
+                    
+                        llm = HuggingFaceHub(repo_id="declare-lab/flan-alpaca-large", model_kwargs={"temperature":6, "max_length": 512})
+                                
 
-                    llm = HuggingFaceHub(repo_id="declare-lab/flan-alpaca-large", model_kwargs={"temperature":6, "max_length": 512})
+                        prompt_template = PromptTemplate(
+                                template = "your task is grab movie name and year using following format -> Name: Value Goes To here else set as None Year: Value Goes To here else set as None get data from {question} ",
+                                input_variables=["question"]
+                            )
                             
-
-                    prompt_template = PromptTemplate(
-                            template = "your task is grab tv series name and year an format it into Name: - Year:  get data from {question} ",
-                            input_variables=["question"]
+                                
+                        chain = LLMChain(llm=llm, prompt=prompt_template)
+                            
+                        outs = chain.run(question)
+                            
+                        split_word = outs.split(" ")
+                        
+                        rich.print(split_word)
+                        
+                        names = split_word[1].strip()
+                        
+                        year = split_word[3].strip()
+                        
+                        rich.print(names)    
+                        rich.print(year)
+                    
+                        #Construct the new file name with the extracted movie title, release year, and original file extension
+                        new_name = (
+                            f"{names} ({year}){ext}" if year else f"{names} ({year}){ext}"
                         )
+
+                        i = 1
+
+                        old_path = os.path.join(path, name)
+                        new_path = os.path.join(path, new_name)
+                        mov_progressbar.start()
+                        os.rename(old_path, new_path)
+                        mov_progressbar.stop()
+
+                        # create files for folders and rename
+                        folder_name = f"{names} ({year})" if year else f"{names} ({year})"
+                        folder_path = os.path.join(file_or_folder, folder_name)
+
+                        if not os.path.exists(folder_path):
+                            os.makedirs(folder_path)
+
+
+                        #move renamed file to folder
+                        dest_path = os.path.join(folder_path, new_name)
+                        try:
+                            shutil.move(new_path, dest_path)
+                        except shutil.Error:
+                            # failed to move file to folder, restore original filename
+                            os.rename(new_path, old_path)
+                            return
+
+                        # delete original file if it exists and is not the same as the destination file
+                        if os.path.exists(old_path) and os.path.realpath(old_path) != os.path.realpath(dest_path):
+                            os.remove(old_path)
+
+                        # delete original folder if it is now empty
+                        if not os.listdir(path):
+                            os.rmdir(path)
                         
+                        with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
+                                    time.sleep(1)
+                                    pbar.update(1)
+                                    mv_p = pbar.n / i * 100
+                                    pbar.update(0)
+                                    mv_per = str(int(mv_p))
+                                    mv_precent.configure(text=mv_per + "%")
+                                    mv_precent.update()
+                                    mov_progressbar.set(pbar.n / i )
+                                    mov_progressbar.update()    
                             
-                    chain = LLMChain(llm=llm, prompt=prompt_template)
-                        
-                    outs = chain.run(question)
-                        
-                    split_word = outs.split(" - ")
-                    
-                    names = split_word[0].replace("Name:","").strip()
-                    
-                    year = split_word[1].replace("Year:","").strip()
-                    
-                    rich.print(name)    
-                    rich.print(year)
-                    
-                      # Construct the new file name with the extracted movie title, release year, and original file extension
-                    new_name = (
-                        f"{names} ({year}){ext}" if year else f"{names} ({year}){ext}"
-                    )
 
-                    i = 1
-
-                    old_path = os.path.join(path, name)
-                    new_path = os.path.join(path, new_name)
-                    mov_progressbar.start()
-                    os.rename(old_path, new_path)
-                    mov_progressbar.stop()
-
-                    # create files for folders and rename
-                    folder_name = f"{names} ({year})" if year else f"{names} ({year})"
-                    folder_path = os.path.join(file_or_folder, folder_name)
-
-                    if not os.path.exists(folder_path):
-                        os.makedirs(folder_path)
-
-
-                    # move renamed file to folder
-                    dest_path = os.path.join(folder_path, new_name)
-                    try:
-                        shutil.move(new_path, dest_path)
-                    except shutil.Error:
-                        # failed to move file to folder, restore original filename
-                        os.rename(new_path, old_path)
-                        return
-
-                    # delete original file if it exists and is not the same as the destination file
-                    if os.path.exists(old_path) and os.path.realpath(old_path) != os.path.realpath(dest_path):
-                        os.remove(old_path)
-
-                    # delete original folder if it is now empty
-                    if not os.listdir(path):
-                        os.rmdir(path)
-                    
-                    with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
-                                time.sleep(1)
-                                pbar.update(1)
-                                mv_p = pbar.n / i * 100
-                                pbar.update(0)
-                                mv_per = str(int(mv_p))
-                                mv_precent.configure(text=mv_per + "%")
-                                mv_precent.update()
-                                mov_progressbar.set(pbar.n / i )
-                                mov_progressbar.update()    
-                        
-
-                    TOTAL_FILES_RENAMED += 1
+                        TOTAL_FILES_RENAMED += 1
 
 
     end_time = time.perf_counter()
@@ -766,18 +772,18 @@ def tv_renamer(file_or_folder):
                 
                 
                 if match:
-                    name = match.group(1).replace(".", " ").replace("_", " ").replace(" - ","").strip()
+                    names = match.group(1).replace(".", " ").replace("_", " ").replace(" - ","").strip()
                     season = match.group(2)
                     episode = match.group(3)
-                    print("Name:", name)
+                    print("Name:", names)
                     print("Season:", season)
                     print("Episode:", episode)    
                     
                 
                 
                 if match_2:
-                     name = match_2.group(1).replace(".", " ").replace("_", " ").replace(" - ","").strip() 
-                     print("Name:", name)
+                     names = match_2.group(1).replace(".", " ").replace("_", " ").replace(" - ","").strip() 
+                     print("Name:", names)
                                 
                 
                 if match_4:
@@ -790,8 +796,9 @@ def tv_renamer(file_or_folder):
                     year = match_3.group(1) or match_3.group(2)
                     print("Year:", year)
                 
+                
 
-                query_params = {'api_key': API_KEY, 'query': "nun2", 'include_adult': True, 'with_genres': 0}
+                query_params = {'api_key': API_KEY, 'query': names, 'include_adult': True, 'with_genres': 0}
 
                 if match_3:
                     query_params['year'] = year
