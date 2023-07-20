@@ -32,6 +32,11 @@ import tkinter as tk
 from tkinter import simpledialog, filedialog
 from ctypes import windll
 import ctypes
+from dotenv import load_dotenv,find_dotenv
+import rich
+from langchain.tools import BraveSearch
+from langchain import HuggingFaceHub, LLMChain
+from langchain.prompts import PromptTemplate
 
 
 
@@ -52,6 +57,12 @@ ctk.set_default_color_theme("dark-blue")
 
 
 app = ctk.CTk()
+
+load_dotenv(find_dotenv())
+
+tmdb = os.getenv("TMDB_API_KEY")
+brave_api = os.getenv("BRAVE_API")
+open_ai = os.getenv("OPENAI_API_KEY")
 
 
 budle_dir = getattr(sys,"_MEIPASS",path.abspath(path.dirname(__file__)))
@@ -340,6 +351,30 @@ def browse():
     return None
 
 
+def tv_browse():
+    result = filedialog.askdirectory()
+    if result:
+        tv_renamer(result)
+        if os.path.isfile(result):
+            file_folder_listbox.configure(state="normal")
+            file_folder_listbox.insert("end", result)
+            file_folder_listbox.configure(state="disabled")
+              
+        elif os.path.isdir(result):
+            file_folder_listbox.configure(state="normal")
+            file_folder_listbox.delete("1.0", "end")
+
+            for current_root, dirs, files in os.walk(result):
+                for file in files:
+                    file_path = os.path.join(current_root, file)
+                    file_folder_listbox.insert("end", file_path + "\n")
+
+            file_folder_listbox.configure(state="disabled")
+
+        return result
+    return None
+    
+
 # Movie Renamer
 
 def file_rename(file_or_folder):
@@ -350,7 +385,7 @@ def file_rename(file_or_folder):
     TOTAL_FILES_ADDED = 0
     TOTAL_FILES_RENAMED = 0
 
-    API_KEY = "6001ceb85e9ef2c42ab120589d2ffe68"
+    API_KEY = tmdb
 
     ext = [
         ".webm",
@@ -438,13 +473,11 @@ def file_rename(file_or_folder):
                 else:
                     # If the year is not present, set it to an empty string
                     year = ""
-                    movie_title = base_name.replace(".", " ").replace("_", " ").replace(" - ","").strip()
+                    movie_title = base_name.replace(".", " ").replace("_", " ").replace(" - "," ").strip()
                     print(movie_title)
 
                 # Add the year parameter to the movie db API URL
                 url = f"https://api.themoviedb.org/3/search/movie?{urlencode({'api_key':API_KEY,'query':movie_title,'year':year,'include_adult':True,'with_genres':0})}"
-
-                time.sleep(2)
 
                 response = requests.get(url)
                 print(json.dumps(response.json(), indent=4))
@@ -465,6 +498,7 @@ def file_rename(file_or_folder):
                         ">": " ",
                         "|": " ",
                         ".": " ",
+                        "$":" "
                     }
 
                     for old, new in err.items():
@@ -525,21 +559,107 @@ def file_rename(file_or_folder):
                         
 
                     TOTAL_FILES_RENAMED += 1
-                    time.sleep(2)
+
 
                 else:
-                    print(f"No movie found for '{base_name}'")
+                    rich.print(f"AI PROCESSING: '{base_name}'")
+                    
+                    
+                    tool = BraveSearch.from_api_key(api_key=brave_api, search_kwargs={"count": 1})
+                    
+                    res = tool.run(base_name)
+                        
+                        
+                    question  = f"{res} "
+                        
+                    rich.print(question)
+                
+
+                    llm = HuggingFaceHub(repo_id="declare-lab/flan-alpaca-large", model_kwargs={"temperature":6, "max_length": 512})
+                            
+
+                    prompt_template = PromptTemplate(
+                            template = "your task is grab tv series name and year an format it into Name: - Year:  get data from {question} ",
+                            input_variables=["question"]
+                        )
+                        
+                            
+                    chain = LLMChain(llm=llm, prompt=prompt_template)
+                        
+                    outs = chain.run(question)
+                        
+                    split_word = outs.split(" - ")
+                    
+                    names = split_word[0].replace("Name:","").strip()
+                    
+                    year = split_word[1].replace("Year:","").strip()
+                    
+                    rich.print(name)    
+                    rich.print(year)
+                    
+                      # Construct the new file name with the extracted movie title, release year, and original file extension
+                    new_name = (
+                        f"{names} ({year}){ext}" if year else f"{names} ({year}){ext}"
+                    )
+
+                    i = 1
+
+                    old_path = os.path.join(path, name)
+                    new_path = os.path.join(path, new_name)
+                    mov_progressbar.start()
+                    os.rename(old_path, new_path)
+                    mov_progressbar.stop()
+
+                    # create files for folders and rename
+                    folder_name = f"{names} ({year})" if year else f"{names} ({year})"
+                    folder_path = os.path.join(file_or_folder, folder_name)
+
+                    if not os.path.exists(folder_path):
+                        os.makedirs(folder_path)
+
+
+                    # move renamed file to folder
+                    dest_path = os.path.join(folder_path, new_name)
+                    try:
+                        shutil.move(new_path, dest_path)
+                    except shutil.Error:
+                        # failed to move file to folder, restore original filename
+                        os.rename(new_path, old_path)
+                        return
+
+                    # delete original file if it exists and is not the same as the destination file
+                    if os.path.exists(old_path) and os.path.realpath(old_path) != os.path.realpath(dest_path):
+                        os.remove(old_path)
+
+                    # delete original folder if it is now empty
+                    if not os.listdir(path):
+                        os.rmdir(path)
+                    
+                    with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
+                                time.sleep(1)
+                                pbar.update(1)
+                                mv_p = pbar.n / i * 100
+                                pbar.update(0)
+                                mv_per = str(int(mv_p))
+                                mv_precent.configure(text=mv_per + "%")
+                                mv_precent.update()
+                                mov_progressbar.set(pbar.n / i )
+                                mov_progressbar.update()    
+                        
+
+                    TOTAL_FILES_RENAMED += 1
+
+
     end_time = time.perf_counter()
 
     total_time = end_time - start_time
-
+    
     console.print(f"Total Files Deleted: {TOTAL_FILES_DELETED}", style="bold red")
     console.print(f"Total Folders Deleted: {TOTAL_FOLDERS_DELETED}", style="bold red")
     console.print(f"Total Files Added: {TOTAL_FILES_ADDED} ", style="bold green")
     console.print(f"Total Files Renamed: {TOTAL_FILES_RENAMED} ", style="bold green")
 
     console.print(f"Total Time Spent: {total_time:.2f} seconds", style="blue")
-
     label = ctk.CTkLabel(out, height=0, width=0)
     label.place(x=360, y=662)
 
@@ -615,20 +735,81 @@ def tv_renamer(file_or_folder):
                 [len(files) for path, dirs, files in os.walk(file_or_folder)]
             )
 
-
             t = num_files
             
-                        # if ext not in name then dont do anything else rename
+
+            # if ext not in name then dont do anything else rename
             if not name.endswith(tuple(ext)):
                 continue
+
 
             else:
                 # Extract the file name and extension from the file path
                 base_name, ext = os.path.splitext(name)
-                print(base_name)
+                    
+                pattern = r"^(.+)\.S(\d{0,})E(\d{0,})"
+                
+                pattern_2 = r"^(\w+)"
+                
+                epi = r"\b\w+\s+(\w+ \w+)\b"
+                
+                year_pat = r"(\s[0-9]{3,})" or r"^(.+?)(?=\s?(?:\()?(\d{4})(?:\))?\s?)"
+                
+
+                match = re.search(pattern,base_name,re.IGNORECASE)
+                
+                match_2 = re.search(pattern_2,base_name,re.IGNORECASE)
+                
+                match_3 = re.search(year_pat,base_name,re.IGNORECASE)
+                
+                match_4 = re.search(epi,base_name,re.IGNORECASE)
+                
+                
+                if match:
+                    name = match.group(1).replace(".", " ").replace("_", " ").replace(" - ","").strip()
+                    season = match.group(2)
+                    episode = match.group(3)
+                    print("Name:", name)
+                    print("Season:", season)
+                    print("Episode:", episode)    
+                    
+                
+                
+                if match_2:
+                     name = match_2.group(1).replace(".", " ").replace("_", " ").replace(" - ","").strip() 
+                     print("Name:", name)
+                                
+                
+                if match_4:
+                    episode = match_4.group(1)
+                    print("Episode:", episode)
+                
+                
+                
+                if  match_3:
+                    year = match_3.group(1) or match_3.group(2)
+                    print("Year:", year)
+                
+
+                query_params = {'api_key': API_KEY, 'query': "nun2", 'include_adult': True, 'with_genres': 0}
+
+                if match_3:
+                    query_params['year'] = year
+                else:
+                    query_params['year'] = None
+
+                url = f"https://api.themoviedb.org/3/search/tv?{urlencode(query_params)}"
+                
+                
+                response = requests.get(url)
+                data = response.json()
+                rich.print(data)
+                    
     
+              
+                              
 
-
+      
 def backup():
     start = time.perf_counter()
     TOTAL_BACKUP = 0
@@ -809,7 +990,7 @@ def start_processing_tv():
         processing_thread.stop()
 
     # start a new thread for processing
-    processing_thread = ProcessingThread(target_function=browse)
+    processing_thread = ProcessingThread(target_function=tv_browse)
     processing_thread.start()
 
 
@@ -890,7 +1071,7 @@ coming.configure(
     text=f"Seacher In Progress",
     font=("Georgia 90 bold ", 18),
     state="normal",
-    text_color="#e0901f",
+    text_color="Green",
 )
 
 
