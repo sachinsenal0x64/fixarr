@@ -714,24 +714,24 @@ def file_rename(file_or_folder):
                         
 
 
-        end_time = time.perf_counter()
+    end_time = time.perf_counter()
 
-        total_time = end_time - start_time
-        
-        console.print(f"Total Files Deleted: {TOTAL_FILES_DELETED}", style="bold red")
-        console.print(f"Total Folders Deleted: {TOTAL_FOLDERS_DELETED}", style="bold red")
-        console.print(f"Total Files Added: {TOTAL_FILES_ADDED} ", style="bold green")
-        console.print(f"Total Files Renamed: {TOTAL_FILES_RENAMED} ", style="bold green")
-        console.print(f"Total Time Spent: {total_time:.2f} seconds", style="blue")
+    total_time = end_time - start_time
+    
+    console.print(f"Total Files Deleted: {TOTAL_FILES_DELETED}", style="bold red")
+    console.print(f"Total Folders Deleted: {TOTAL_FOLDERS_DELETED}", style="bold red")
+    console.print(f"Total Files Added: {TOTAL_FILES_ADDED} ", style="bold green")
+    console.print(f"Total Files Renamed: {TOTAL_FILES_RENAMED} ", style="bold green")
+    console.print(f"Total Time Spent: {total_time:.2f} seconds", style="blue")
 
-        label.pack()
+    label.pack()
 
-        label.configure(
-            text=f"✅ TOTAL : {TOTAL_FILES_RENAMED} FILES RENAMED",
-            font=("Impact", 18),
-            state="normal",
-            text_color="Green",
-        )
+    label.configure(
+        text=f"✅ TOTAL : {TOTAL_FILES_RENAMED} FILES RENAMED",
+        font=("Impact", 18),
+        state="normal",
+        text_color="Green",
+    )
             
 
 
