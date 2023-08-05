@@ -40,13 +40,6 @@
 
 <br>
 
-## 🏮 NOTE
-
-## 🚀 Some Features are Still in Development :)
-
-
-<br>
-
 
 ## 🆕 BETA CHANNEL
 
