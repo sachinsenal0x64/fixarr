@@ -44,9 +44,39 @@
 
 ## 🚀 Some Features are Still in Development :)
 
+
+<br>
+
+
+## 🆕 BETA CHANNEL
+
+[BETA](https://github.com/sachinsenal0x64/FIXARR)
+
+
 <br>
 
 # 📐 INSTALLATION
+
+<br>
+
+
+### 🏮 YOU DONT WANT TO COMPILE FROM SOURCE CODE ITS OPTIONAL. YOU CAN GET PREBUILD INSTALLER FROM [RELEASES](https://github.com/sachinsenal0x64/FIXARR/releases)
+
+
+
+<br>
+
+## 🗝 .ENV SETUP (Important):
+
+<br>
+
+- Rename **.env.example** to **.env**
+  
+- You can get key from [THE MOVIE DB](https://www.themoviedb.org/settings/api?language=en-US) and its totally free.
+
+```
+TMDB_API_KEY=tmdbkey
+```
 
 <br>
 
@@ -108,7 +138,7 @@ python fixarr.py
 
 <br>
 
-IF YOU WANT TO MAKE OWN STANDALONE EXE USE NUITKA TO COMPILE SOURCE CODE INTO C AFTER ITS CAN RUN AS EXE.  OR  YOU CAN JUST DOWNLOAD PRE BUILD INSTALLER FROM [RELEASES](https://github.com/sachinsenal0x64/FIXARR/releases)
+IF YOU WANT TO MAKE OWN STANDALONE EXE USE NUITKA TO COMPILE SOURCE CODE INTO C AFTER ITS CAN RUN AS EXE.
 
 <br>
 
