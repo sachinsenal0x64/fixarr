@@ -8,7 +8,7 @@
 
 # 🛠️ FIXARR
 
-![FIXARR)](https://cdn.staticaly.com/gh/sachinsenal0x64/picx-images-hosting@master/fixarr-gui.18d3p8akdsg0.png)
+![FIXARR)](https://cdn.staticaly.com/gh/sachinsenal0x64/picx-images-hosting@master/fixarr-ui.dkw2033foqo.png)
 
 <br>
 
