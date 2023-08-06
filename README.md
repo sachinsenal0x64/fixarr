@@ -3,7 +3,7 @@
 <h4 align="center"> Movie & Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)</h4>
 
 <p style="text-align:center;" align="center">
-  <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/FIXARR LOGO.10it15i3tejk.webp"/>
+  <img align="center" src="https://cdn.staticaly.com/gh/sachinsenal0x64/picx-images-hosting@master/fixarr.52f9qd1anpg0.png" width="512px" height="512px"/>
 </p>
 
 # 🛠️ FIXARR
@@ -37,6 +37,13 @@
 ## 👎 Cons
 
 - 🐌 Slowly Develop
+
+<br>
+
+## 🏮 NOTE
+
+## 🚀 Some Features are Still in Development :)
+
 
 <br>
 
