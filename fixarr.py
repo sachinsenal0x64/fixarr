@@ -15,6 +15,7 @@ import datetime
 import subprocess
 import sys
 import time
+import rich
 from rich.console import Console
 from rich.text import Text
 from tqdm import tqdm
