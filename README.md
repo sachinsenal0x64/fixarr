@@ -6,7 +6,7 @@
   <img align="center" src="https://cdn.staticaly.com/gh/sachinsenal0x64/picx-images-hosting@master/logov2.5sr31yyd76w0.png" width="256px" height="256px"/>
 </p>
 
-# 🛠️ FIXARR
+# 🖼️ GUI
 
 ![FIXARR)](https://cdn.staticaly.com/gh/sachinsenal0x64/picx-images-hosting@master/fixarr-ui.dkw2033foqo.png)
 
