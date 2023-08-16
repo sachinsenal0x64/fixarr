@@ -73,7 +73,7 @@
 
 - Rename **.env.example** to **.env**
   
-- You can get key from [THE MOVIE DB](https://www.themoviedb.org/settings/api?language=en-US) and its totally free.
+- You can get api key from [THE MOVIE DB](https://www.themoviedb.org/settings/api?language=en-US) and its totally free.
 
 ```
 TMDB_API_KEY=tmdbkey
