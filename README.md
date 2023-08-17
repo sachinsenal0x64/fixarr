@@ -81,7 +81,7 @@ TMDB_API_KEY=tmdbkey
 
 <br>
 
-🐧For Linux :
+🐧For GNU/Linux :
 
 ```Terminal
 
