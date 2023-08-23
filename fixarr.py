@@ -1,6 +1,6 @@
 __author__ = "FIXARR"
 
-__version__ = "2.0.0"
+__version__ = "0.1.0"
 
 
 import re
@@ -36,8 +36,6 @@ import PTN
 from thefuzz import fuzz, process
 
 
-
-
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
@@ -47,8 +45,6 @@ app = ctk.CTk()
 load_dotenv(find_dotenv())
 
 tmdb = os.getenv("TMDB_API_KEY")
-
-
 
 
 budle_dir = getattr(sys, "_MEIPASS", path.abspath(path.dirname(__file__)))
@@ -78,14 +74,10 @@ path_to_app_6 = path.join(budle_dir, "assets", "emby.png")
 path_to_app_7 = path.join(budle_dir, "assets", "logout.png")
 
 
-
-
-
 WIDTH, HEIGHT = app.winfo_screenwidth(), app.winfo_screenheight()
 
 
 if platform.system() == "Windows":
-
     if WIDTH == 3840 and HEIGHT == 2160:
         app.geometry("1500x900")
         ctk.set_widget_scaling(2.0)
@@ -109,9 +101,7 @@ if platform.system() == "Windows":
     app.iconbitmap(path_to_app_1)
 
 
-
 if platform.system() == "Linux":
-
     if WIDTH == 3840 and HEIGHT == 2160:
         app.geometry("1500x900")
         ctk.set_widget_scaling(2.0)
@@ -132,20 +122,15 @@ if platform.system() == "Linux":
     else:
         app.geometry("1000x600")
 
-    log= Image.open(path_to_app_1)
+    log = Image.open(path_to_app_1)
     logo = ImageTk.PhotoImage(log)
 
-    app.tk.call('wm', 'iconphoto', app._w, logo)
-
-
-
-
+    app.tk.call("wm", "iconphoto", app._w, logo)
 
 
 app.title("FIXARR")
 
 app.resizable(width=True, height=True)
-
 
 
 def clear():
@@ -389,7 +374,7 @@ def browse():
                     file_folder_listbox.insert("end", file_path + "\n")
                     file_folder_listbox.configure(state="disabled")
 
-        file_rename(result)
+        movie_rename(result)
         return result
     return None
 
@@ -650,8 +635,6 @@ def tv_renamer(file_or_folder):
     TOTAL_FILES_ADDED = 0
     TOTAL_FILES_RENAMED = 0
 
-    API_KEY = tmdb
-
     ext = [
         ".webm",
         ".mkv",
@@ -760,7 +743,7 @@ def tv_renamer(file_or_folder):
                         print("Title:", title)
 
                 query_params = {
-                    "api_key": API_KEY,
+                    "api_key": tmdb,
                     "query": title,
                     "year": year,
                     "include_adult": True,
@@ -777,12 +760,15 @@ def tv_renamer(file_or_folder):
 
                 rich.print(data)
 
-                t_name = data["results"][0]["name"]
-                t_date = data["results"][0]["first_air_date"]
+                try:
+                    t_name = data["results"][0]["name"]
+                    t_date = data["results"][0]["first_air_date"]
 
-                t_date = t_date[:4]
+                    t_date = t_date[:4]
 
-                count.append(t_name)
+                    count.append(t_name)
+                except:
+                    pass
 
                 # Check if any TV show matches the search query
                 if data.get("results"):
@@ -790,7 +776,7 @@ def tv_renamer(file_or_folder):
                     tv_show_id = data["results"][0]["id"]
 
                     # Now, use the TV show ID to fetch information about its seasons
-                    season_url = f"https://api.themoviedb.org/3/tv/{tv_show_id}?api_key={API_KEY}"
+                    season_url = f"https://api.themoviedb.org/3/tv/{tv_show_id}?api_key={tmdb}"
 
                     season_response = requests.get(season_url)
                     season_data = season_response.json()
@@ -803,7 +789,7 @@ def tv_renamer(file_or_folder):
                         )
 
                         # Now, fetch information about episodes for each season
-                        episode_url = f"https://api.themoviedb.org/3/tv/{tv_show_id}/season/{season['season_number']}?api_key={API_KEY}"
+                        episode_url = f"https://api.themoviedb.org/3/tv/{tv_show_id}/season/{season['season_number']}?api_key={tmdb}"
                         episode_response = requests.get(episode_url)
                         episode_data = episode_response.json()
                         rich.print("Episodes:")
@@ -859,7 +845,8 @@ def tv_renamer(file_or_folder):
 
                         # Rename the file
                         try:
-                            os.rename(old_file_path, new_file_path)
+                            if not t_name in count:
+                                os.rename(old_file_path, new_file_path)
 
                         except OSError as e:
                             print(f"An error occurred while renaming the file: {e}")
@@ -891,23 +878,36 @@ def tv_renamer(file_or_folder):
 
     end_time = time.perf_counter()
 
-    total_time = end_time - start_time
+    for current_root, dirs, files in os.walk(file_or_folder, topdown=False):
+        for file in files:
+            file_folder_listbox.configure(state="normal")
+            file_path = os.path.join(current_root, file)
+            # rem.delete("1.0", "end")
+            file_folder_listbox.insert("end", file_path + "\n")
+            file_folder_listbox.configure(state="disabled")
 
-    console.print(f"Total Files Deleted: {TOTAL_FILES_DELETED}", style="bold red")
-    console.print(f"Total Folders Deleted: {TOTAL_FOLDERS_DELETED}", style="bold red")
-    console.print(f"Total Files Added: {TOTAL_FILES_ADDED} ", style="bold green")
-    console.print(f"Total Files Renamed: {TOTAL_FILES_RENAMED} ", style="bold green")
+        end_time = time.perf_counter()
 
-    console.print(f"Total Time Spent: {total_time:.2f} seconds", style="blue")
+        total_time = end_time - start_time
 
-    label.pack()
+        console.print(f"Total Files Deleted: {TOTAL_FILES_DELETED}", style="bold red")
+        console.print(
+            f"Total Folders Deleted: {TOTAL_FOLDERS_DELETED}", style="bold red"
+        )
+        console.print(f"Total Files Added: {TOTAL_FILES_ADDED} ", style="bold green")
+        console.print(
+            f"Total Files Renamed: {TOTAL_FILES_RENAMED} ", style="bold green"
+        )
+        console.print(f"Total Time Spent: {total_time:.2f} seconds", style="blue")
 
-    label.configure(
-        text=f"✅ TOTAL : {TOTAL_FILES_RENAMED} FILES RENAMED",
-        font=("Segeo UI", 18),
-        state="normal",
-        text_color="Green",
-    )
+        label.pack()
+
+        label.configure(
+            text=f"✅ TOTAL : {TOTAL_FILES_RENAMED} FILES RENAMED",
+            font=("Segeo UI", 18),
+            state="normal",
+            text_color="Green",
+        )
 
 
 def backup():
@@ -1309,7 +1309,6 @@ del_progressbar.place(x=40, y=170)
 del_progressbar.set(0)
 
 
-
 if __name__ == "__main__":
     colorama.init()
     console = Console()
@@ -1325,8 +1324,7 @@ if __name__ == "__main__":
     RED = "\x1b[1;31;40m"
 
     nf = "PLEX BACKUPS"
-    
-        
+
     if platform == "Windows":
         user_home = os.environ["USERPROFILE"]
         src_root = os.path.join(user_home, "AppData", "Local")
@@ -1338,7 +1336,6 @@ if __name__ == "__main__":
 
     elif platform == "Linux":
         pass
-    
 
     elif platform == "Darwin":
         pass
