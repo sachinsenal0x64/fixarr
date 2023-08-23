@@ -85,7 +85,7 @@ TMDB_API_KEY=tmdbkey
 
 ```Terminal
 
-🐧 Debian Based Distros:
+🐧 Debian Based Distros :
 
 sudo apt-get install software-properties-common
 sudo apt-get install python3.10

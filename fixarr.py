@@ -1,6 +1,6 @@
 __author__ = "FIXARR"
 
-__version__ = "1.0.0"
+__version__ = "2.0.0"
 
 
 import re
@@ -26,28 +26,16 @@ from rich.console import Console
 import colorama
 from colorama import Fore, Style, Back
 import customtkinter as ctk
-from PIL import Image
+from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import simpledialog, filedialog
-from ctypes import windll
-import ctypes
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
+import rich
 from itertools import islice
 import PTN
-from concurrent.futures import ThreadPoolExecutor
-from thefuzz import fuzz
-from thefuzz import process
+from thefuzz import fuzz, process
 
 
-try:
-    windll.shcore.SetProcessDpiAwareness(2)
-
-except:
-    pass
-
-
-user32 = ctypes.windll.user32
-screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
 
 ctk.set_appearance_mode("dark")
@@ -56,9 +44,11 @@ ctk.set_default_color_theme("dark-blue")
 
 app = ctk.CTk()
 
-load_dotenv()
+load_dotenv(find_dotenv())
 
-API_KEY = os.getenv("TMDB_API_KEY")
+tmdb = os.getenv("TMDB_API_KEY")
+
+
 
 
 budle_dir = getattr(sys, "_MEIPASS", path.abspath(path.dirname(__file__)))
@@ -88,37 +78,74 @@ path_to_app_6 = path.join(budle_dir, "assets", "emby.png")
 path_to_app_7 = path.join(budle_dir, "assets", "logout.png")
 
 
-app.iconbitmap(path_to_app_1)
 
 
-if screensize[0] == 3840 and screensize[1] == 2160:
-    app.geometry("1500x900")
-    ctk.set_widget_scaling(2.0)
+
+WIDTH, HEIGHT = app.winfo_screenwidth(), app.winfo_screenheight()
 
 
-elif screensize[0] == 2560 and screensize[1] == 1440:
-    app.geometry("1388x800")
-    ctk.set_widget_scaling(1.0)
+if platform.system() == "Windows":
+
+    if WIDTH == 3840 and HEIGHT == 2160:
+        app.geometry("1500x900")
+        ctk.set_widget_scaling(2.0)
+
+    elif WIDTH == 2560 and HEIGHT == 1440:
+        app.geometry("1388x800")
+        ctk.set_widget_scaling(1.0)
+
+    elif WIDTH == 1920 and HEIGHT == 1080:
+        app.geometry("1388x768")
+
+    elif WIDTH == 1600 and HEIGHT == 900:
+        app.geometry("1350x580")
+
+    elif WIDTH == 1280 and HEIGHT == 720:
+        app.geometry("1230x490")
+
+    else:
+        app.geometry("1000x600")
+
+    app.iconbitmap(path_to_app_1)
 
 
-elif screensize[0] == 1920 and screensize[1] == 1080:
-    app.geometry("1388x768")
+
+if platform.system() == "Linux":
+
+    if WIDTH == 3840 and HEIGHT == 2160:
+        app.geometry("1500x900")
+        ctk.set_widget_scaling(2.0)
+
+    elif WIDTH == 2560 and HEIGHT == 1440:
+        app.geometry("1388x800")
+        ctk.set_widget_scaling(1.0)
+
+    elif WIDTH == 1920 and HEIGHT == 1080:
+        app.geometry("1388x768")
+
+    elif WIDTH == 1600 and HEIGHT == 900:
+        app.geometry("1350x580")
+
+    elif WIDTH == 1280 and HEIGHT == 720:
+        app.geometry("1230x490")
+
+    else:
+        app.geometry("1000x600")
+
+    log= Image.open(path_to_app_1)
+    logo = ImageTk.PhotoImage(log)
+
+    app.tk.call('wm', 'iconphoto', app._w, logo)
 
 
-elif screensize[0] == 1600 and screensize[1] == 900:
-    app.geometry("1350x580")
 
 
-elif screensize[0] == 1280 and screensize[1] == 720:
-    app.geometry("1230x490")
-
-else:
-    app.geometry("1000x600")
 
 
 app.title("FIXARR")
 
 app.resizable(width=True, height=True)
+
 
 
 def clear():
@@ -329,7 +356,7 @@ def deletes(result):
 
         label_8.configure(
             text=f"✅ TOTAL : {TOTAL_FILES_DELETED} FILES DELETED",
-            font=("Impact", 18),
+            font=("Segeo UI", 18),
             state="normal",
             text_color="#bf214b",
         )
@@ -362,14 +389,13 @@ def browse():
                     file_folder_listbox.insert("end", file_path + "\n")
                     file_folder_listbox.configure(state="disabled")
 
-        movie_rename(result)
+        file_rename(result)
         return result
     return None
 
 
 def tv_browse():
     result = filedialog.askdirectory()
-    label.pack_forget()
     if result:
         if os.path.isfile(result):
             file_folder_listbox.configure(state="normal")
@@ -401,6 +427,8 @@ def movie_rename(file_or_folder):
     TOTAL_FOLDERS_DELETED = 0
     TOTAL_FILES_ADDED = 0
     TOTAL_FILES_RENAMED = 0
+
+    API_KEY = tmdb
 
     ext = [
         ".webm",
@@ -585,24 +613,28 @@ def movie_rename(file_or_folder):
             file_folder_listbox.insert("end", file_path + "\n")
             file_folder_listbox.configure(state="disabled")
 
-    end_time = time.perf_counter()
+        end_time = time.perf_counter()
 
-    total_time = end_time - start_time
+        total_time = end_time - start_time
 
-    console.print(f"Total Files Deleted: {TOTAL_FILES_DELETED}", style="bold red")
-    console.print(f"Total Folders Deleted: {TOTAL_FOLDERS_DELETED}", style="bold red")
-    console.print(f"Total Files Added: {TOTAL_FILES_ADDED} ", style="bold green")
-    console.print(f"Total Files Renamed: {TOTAL_FILES_RENAMED} ", style="bold green")
-    console.print(f"Total Time Spent: {total_time:.2f} seconds", style="blue")
+        console.print(f"Total Files Deleted: {TOTAL_FILES_DELETED}", style="bold red")
+        console.print(
+            f"Total Folders Deleted: {TOTAL_FOLDERS_DELETED}", style="bold red"
+        )
+        console.print(f"Total Files Added: {TOTAL_FILES_ADDED} ", style="bold green")
+        console.print(
+            f"Total Files Renamed: {TOTAL_FILES_RENAMED} ", style="bold green"
+        )
+        console.print(f"Total Time Spent: {total_time:.2f} seconds", style="blue")
 
-    label.pack()
+        label.pack()
 
-    label.configure(
-        text=f"✅ TOTAL : {TOTAL_FILES_RENAMED} FILES RENAMED",
-        font=("Impact", 18),
-        state="normal",
-        text_color="Green",
-    )
+        label.configure(
+            text=f"✅ TOTAL : {TOTAL_FILES_RENAMED} FILES RENAMED",
+            font=("Segeo UI", 18),
+            state="normal",
+            text_color="Green",
+        )
 
 
 # TV RENAMER
@@ -617,6 +649,8 @@ def tv_renamer(file_or_folder):
     TOTAL_FOLDERS_DELETED = 0
     TOTAL_FILES_ADDED = 0
     TOTAL_FILES_RENAMED = 0
+
+    API_KEY = tmdb
 
     ext = [
         ".webm",
@@ -855,14 +889,6 @@ def tv_renamer(file_or_folder):
                 if FileExistsError:
                     continue
 
-    for current_root, dirs, files in os.walk(file_or_folder, topdown=False):
-        for file in files:
-            file_folder_listbox.configure(state="normal")
-            file_path = os.path.join(current_root, file)
-            # rem.delete("1.0", "end")
-            file_folder_listbox.insert("end", file_path + "\n")
-            file_folder_listbox.configure(state="disabled")
-
     end_time = time.perf_counter()
 
     total_time = end_time - start_time
@@ -878,7 +904,7 @@ def tv_renamer(file_or_folder):
 
     label.configure(
         text=f"✅ TOTAL : {TOTAL_FILES_RENAMED} FILES RENAMED",
-        font=("Impact", 18),
+        font=("Segeo UI", 18),
         state="normal",
         text_color="Green",
     )
@@ -988,7 +1014,7 @@ def backup():
 
         label_2.configure(
             text=f"✅ Total Backup Added: {TOTAL_BACKUP}",
-            font=("Impact", 18),
+            font=("Segeo UI", 18),
             state="normal",
             text_color="Green",
         )
@@ -1128,7 +1154,7 @@ serc.pack()
 
 serc.configure(
     text=f"🛠 IN PROGRESS",
-    font=("Impact", 18),
+    font=("Segeo UI", 18),
     state="normal",
     text_color="#d4af2a",
 )
@@ -1283,6 +1309,7 @@ del_progressbar.place(x=40, y=170)
 del_progressbar.set(0)
 
 
+
 if __name__ == "__main__":
     colorama.init()
     console = Console()
@@ -1298,14 +1325,23 @@ if __name__ == "__main__":
     RED = "\x1b[1;31;40m"
 
     nf = "PLEX BACKUPS"
+    
+        
+    if platform == "Windows":
+        user_home = os.environ["USERPROFILE"]
+        src_root = os.path.join(user_home, "AppData", "Local")
+        dst_root = os.path.join(user_home, "Documents")
 
-    user_home = os.environ["USERPROFILE"]
-    src_root = os.path.join(user_home, "AppData", "Local")
-    dst_root = os.path.join(user_home, "Documents")
+        nff = os.path.join(dst_root, nf)
+        if not os.path.exists(nff):
+            os.mkdir(nff)
 
-    nff = os.path.join(dst_root, nf)
-    if not os.path.exists(nff):
-        os.mkdir(nff)
+    elif platform == "Linux":
+        pass
+    
+
+    elif platform == "Darwin":
+        pass
 
     folder_name = "Plex Media Server"
     stop_flag = False
