@@ -71,7 +71,7 @@
 
 <br>
 
-- Rename **.env.example** to **.env**
+- Create **.env** File
   
 - You can get api key from [THE MOVIE DB](https://www.themoviedb.org/settings/api?language=en-US) and its totally free.
 
