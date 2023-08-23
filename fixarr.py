@@ -29,7 +29,7 @@ import customtkinter as ctk
 from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import simpledialog, filedialog
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 import rich
 from itertools import islice
 import PTN
@@ -42,9 +42,9 @@ ctk.set_default_color_theme("dark-blue")
 
 app = ctk.CTk()
 
-load_dotenv(find_dotenv())
+load_dotenv()
 
-tmdb = os.getenv("TMDB_API_KEY")
+tmdb = "5740bd874a57b6d0814c98d36e1124b2" or os.getenv("TMDB_API_KEY")
 
 
 budle_dir = getattr(sys, "_MEIPASS", path.abspath(path.dirname(__file__)))
@@ -374,7 +374,7 @@ def browse():
                     file_folder_listbox.insert("end", file_path + "\n")
                     file_folder_listbox.configure(state="disabled")
 
-        movie_rename(result)
+        movie_renamer(result)
         return result
     return None
 
@@ -405,7 +405,7 @@ def tv_browse():
 # Movie Renamer
 
 
-def movie_rename(file_or_folder):
+def movie_renamer(file_or_folder):
     start_time = time.perf_counter()
 
     TOTAL_FILES_DELETED = 0
@@ -542,11 +542,12 @@ def movie_rename(file_or_folder):
                         result = result.replace(old, new)
 
                     date = data["results"][0]["release_date"][:4]
-                    print(result)
                     print(date)
 
                     # Construct the new file name with the extracted movie title, release year, and original file extension
-                    new_name = f"{result} ({date}){ext}" if year else f"{result}{ext}"
+                    new_name = (
+                        f"{result} ({date}){ext}" if year else f"{result} ({date}){ext}"
+                    )
 
                     i = 1
 
@@ -557,7 +558,7 @@ def movie_rename(file_or_folder):
                     mov_progressbar.stop()
 
                     # create files for folders and rename
-                    folder_name = f"{result} ({date})" if year else f"{result}"
+                    folder_name = f"{result} ({date})" if year else f"{result} ({date})"
                     folder_path = os.path.join(file_or_folder, folder_name)
 
                     if not os.path.exists(folder_path):
@@ -586,9 +587,6 @@ def movie_rename(file_or_folder):
                     TOTAL_FILES_RENAMED += 1
 
                     remove_empty_directories(file_or_folder)
-
-                else:
-                    pass
 
     for current_root, dirs, files in os.walk(file_or_folder, topdown=False):
         for file in files:
@@ -697,13 +695,12 @@ def tv_renamer(file_or_folder):
 
             else:
                 # Extract the file name and extension from the file path
-                base_name, ext = os.path.splitext(name)
 
-                title = None
                 year = None
 
+                base_name, ext = os.path.splitext(name)
+
                 max_similarity_ratio = 0
-                episode_name = None
 
                 match_3 = PTN.parse(base_name, standardise=False, coherent_types=True)
 
@@ -766,9 +763,8 @@ def tv_renamer(file_or_folder):
 
                     t_date = t_date[:4]
 
-                    count.append(t_name)
                 except:
-                    pass
+                    rich.print("Movie Skipped...")
 
                 # Check if any TV show matches the search query
                 if data.get("results"):
@@ -776,7 +772,9 @@ def tv_renamer(file_or_folder):
                     tv_show_id = data["results"][0]["id"]
 
                     # Now, use the TV show ID to fetch information about its seasons
-                    season_url = f"https://api.themoviedb.org/3/tv/{tv_show_id}?api_key={tmdb}"
+                    season_url = (
+                        f"https://api.themoviedb.org/3/tv/{tv_show_id}?api_key={tmdb}"
+                    )
 
                     season_response = requests.get(season_url)
                     season_data = season_response.json()
@@ -818,8 +816,8 @@ def tv_renamer(file_or_folder):
                                 episode_name,
                             )
 
-                            new_file_name = f"{t_name} - S{season['season_number']:02d}E{episode:02d} - {episode_name}{ext}"
-                            rich.print(new_file_name)
+                        new_file_name = f"{t_name} - S{season['season_number']:02d}E{episode:02d} - {episode_name} ({t_date}){ext}"
+                        rich.print(new_file_name)
 
                         tv_folder = f"{t_name} ({t_date})"
                         season_folder = f"Season {season['season_number']:02d}"
@@ -845,8 +843,11 @@ def tv_renamer(file_or_folder):
 
                         # Rename the file
                         try:
-                            if not t_name in count:
+                            if not os.path.exists(new_file_path):
                                 os.rename(old_file_path, new_file_path)
+
+                            else:
+                                rich.print("File Exists")
 
                         except OSError as e:
                             print(f"An error occurred while renaming the file: {e}")
@@ -868,10 +869,6 @@ def tv_renamer(file_or_folder):
                         TOTAL_FILES_RENAMED += 1
 
                         remove_empty_directories(file_or_folder)
-
-                if t_name in count:
-                    print("Already Proccesing")
-                    continue
 
                 if FileExistsError:
                     continue
