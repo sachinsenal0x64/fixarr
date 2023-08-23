@@ -44,7 +44,7 @@ app = ctk.CTk()
 
 load_dotenv()
 
-tmdb = "5740bd874a57b6d0814c98d36e1124b2" or os.getenv("TMDB_API_KEY")
+tmdb = os.getenv("TMDB_API_KEY","5740bd874a57b6d0814c98d36e1124b2")
 
 
 budle_dir = getattr(sys, "_MEIPASS", path.abspath(path.dirname(__file__)))
