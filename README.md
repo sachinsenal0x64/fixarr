@@ -157,6 +157,7 @@ nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-d
 ### GNU/LINUX
 
 
+
 ```
 nuitka3 --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-data-dir=./assets=./assets --windows-company-name=FIXARR --product-name=FIXARR --product-version=0.1.0  --file-version=0.1.0 --plugin-enable=tk-inter fixarr.py
 
