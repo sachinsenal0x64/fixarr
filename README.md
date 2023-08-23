@@ -89,15 +89,17 @@ TMDB_API_KEY=tmdbkey
 
 sudo apt-get install software-properties-common
 sudo apt-get install python3.10
-sudo apt-get install python3-tk
 
+
+pip3 install customtkinter
 pip3 install -r requirements.txt
 python3 fixarr.py
+
 
 🐧 Fedora:
 
 sudo dnf install python3
-sudo dnf install python3-tkinter
+pip3 install customtkinter
 
 pip3 install -r requirements.txt
 python3 fixarr.py
@@ -115,11 +117,11 @@ For Mac OS With BREW:
 if you already not install brew then install its from offical site : https://brew.sh/#install 
 
 brew install python3
-brew install python-tk@3.10
+pip3 install customtkinter
+
 pip3 install -r requirements.txt
 python3 fixarr.py
 
-or just run .bat File also you can create bat_shortcut
 ```
 
 <br>
@@ -127,10 +129,13 @@ or just run .bat File also you can create bat_shortcut
 🚪 For Windows:
 
 ```CMD
-First Install Python  
+First Install Python (python.org) 
 
 pip install -r requirements.txt
 python fixarr.py
+
+
+or just run .bat File also you can create bat_shortcut
 ```
 
 <br>
