@@ -96,7 +96,7 @@ pip3 install -r requirements.txt
 python3 fixarr.py
 
 
-🐧 Fedora:
+🐧 Fedora Based Distros:
 
 sudo dnf install python3
 pip3 install customtkinter
@@ -117,8 +117,8 @@ For Mac OS With BREW:
 if you already not install brew then install its from offical site : https://brew.sh/#install 
 
 brew install python3
-pip3 install customtkinter
 
+pip3 install customtkinter
 pip3 install -r requirements.txt
 python3 fixarr.py
 
@@ -157,8 +157,8 @@ open your cmd in Fixarr PATH
 pip -v install nuitka 
 
 nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/i.ico --include-data-dir=./assets=./assets --windows-company-name=FIXARR --product-name=FIXARR --product-version=0.1.0  --file-version=0.1.0 --plugin-enable=tk-inter fixarr.py
-
 ```
+
 ### GNU/LINUX
 
 
