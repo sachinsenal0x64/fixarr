@@ -26,7 +26,6 @@ if '%errorlevel%' NEQ '0' (
 :--------------------------------------
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
 
-pause
 set python_path=python
 set code_file=fixarr.py
 start cmd.exe /k %python_path% %code_file%
