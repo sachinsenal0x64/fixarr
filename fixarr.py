@@ -1322,7 +1322,7 @@ if __name__ == "__main__":
 
     nf = "PLEX BACKUPS"
 
-    if platform == "Windows":
+    if os.name == "nt":
         user_home = os.environ["USERPROFILE"]
         src_root = os.path.join(user_home, "AppData", "Local")
         dst_root = os.path.join(user_home, "Documents")
