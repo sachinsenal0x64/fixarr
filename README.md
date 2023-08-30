@@ -23,6 +23,8 @@
 - 🐟 JELLYFIN BACKUP (⭕ in progress)
 - ❄ EMBY BACKUP (⭕ in progress)
 - ⏬ MOVIE & TV SEACHER (⭕ in progress)
+  
+- 💎 FALLBACK SERVERS  (IF RENAME PROCESS FAIL ITS TRY OTHER SOURCES TO SCRAP CORRECT NAME  THIS API IS PRIVATE ONLY AVAILABLE IN [RELEASES](https://github.com/sachinsenal0x64/FIXARR/releases) BUT ITS ALSO HAVE IN SOURCE CODE WITHOUT API KEY AND ENDPOINTS BTW IF YOUR DEVELOPER YOU CAN REPLACE WITH IMDB API)
 
 <br>
 
@@ -61,9 +63,9 @@
 <br>
 
 
-### 🏮 YOU DONT WANT TO COMPILE FROM SOURCE CODE ITS OPTIONAL. YOU CAN GET PREBUILD INSTALLER FROM [RELEASES](https://github.com/sachinsenal0x64/FIXARR/releases)
+#### 🏮 YOU DONT WANT TO COMPILE FROM SOURCE CODE ITS OPTIONAL. YOU CAN GET PREBUILD INSTALLER FROM [RELEASES](https://github.com/sachinsenal0x64/FIXARR/releases)
 
-
+# 💻 From Source [MODE: HARD]
 
 <br>
 
@@ -144,8 +146,7 @@ or just run .bat File also you can create bat_shortcut
 
 <br>
 
-IF YOU WANT TO MAKE OWN STANDALONE EXE USE NUITKA TO COMPILE SOURCE CODE INTO C AFTER ITS CAN RUN AS EXE.
-
+#### IF YOU WANT TO MAKE OWN STANDALONE APP (AKA .EXE or .BIN) USE NUITKA TO COMPILE SOURCE CODE INTO C 
 <br>
 
 ```compile
@@ -164,7 +165,7 @@ nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/favicon.ico --inc
 
 
 ```
-nuitka3 --clang --standalone --windows-icon-from-ico=./assets/favicon.ico --include-data-dir=./assets=./assets --windows-company-name=FIXARR --product-name=FIXARR --product-version=0.1.0  --file-version=0.1.0 --plugin-enable=tk-inter fixarr.py
+nuitka3 --clang --standalone --windows-icon-from-ico=./assets/favicon.ico --include-data-dir=./assets=./assets --windows-company-name=FIXARR --product-name=FIXARR --product-version=0.1.0  --file-version=0.1.0 --plugin-enable=tk-inter -o fixarr.bin fixarr.py
 
 ```
 
@@ -172,6 +173,13 @@ nuitka3 --clang --standalone --windows-icon-from-ico=./assets/favicon.ico --incl
 <br>
 
 ## 💡 CREDITS
+
+#### MOVIE API & TV :  [THEMOVIEDB.ORG](https://wwww.themoviedb.org)
+#### PARSER LIBARY FOR TV SERIES: [PTN PROJECT](https://github.com/platelminto/parse-torrent-title)
+
+<br>
+<br>
+
 
 <p style="text-align:center;" align="center">
    <a href="https://www.themoviedb.org">
