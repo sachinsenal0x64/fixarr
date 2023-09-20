@@ -1,6 +1,6 @@
 <h1 align="center"> 🛠️ FIXARR  </h1>
 
-<h4 align="center"> Movie & Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)</h4>
+<h4 align="center"> Ultimate Movie & Tv Renamer With Backup Media Server (Plex / Emby / Jellyfin)</h4>
 
 <p style="text-align:center;" align="center">
   <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/logov2.5sr31yyd76w0.png" width="256px" height="256px"/>
