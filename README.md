@@ -8,7 +8,7 @@
 
 # 🖼️ GUI
 
-![FIXARR)](https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/fixarr-ui.dkw2033foqo.png)
+![FIXARR)](https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/Screenshot_20230920_223402.4i08ima1b4s0.png)
 
 <br>
 
