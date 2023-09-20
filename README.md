@@ -8,7 +8,7 @@
 
 # 🖼️ GUI
 
-![FIXARR)](https://cdn.staticaly.com/gh/sachinsenal0x64/picx-images-hosting@master/fixarr-ui.dkw2033foqo.png)
+![FIXARR)](https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/fixarr-ui.dkw2033foqo.png)
 
 <br>
 
@@ -183,7 +183,7 @@ nuitka3 --clang --standalone --windows-icon-from-ico=./assets/favicon.ico --incl
 
 <p style="text-align:center;" align="center">
    <a href="https://www.themoviedb.org">
-  <img align="center" src="https://github.com/FIXARR/FIXARR/blob/279c46c7744bfdbb2e99dd802637cea65d2fdc3d/assets/tmdb.svg" height="200"/>
+  <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/tmdb.6rfszs2oa2k0.svg" height="200"/>
    </a>
 </p>
 
