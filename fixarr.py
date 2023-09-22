@@ -1331,10 +1331,10 @@ if __name__ == "__main__":
         if not os.path.exists(nff):
             os.mkdir(nff)
 
-    elif platform == "Linux":
+    elif platform.system() == "Linux":
         pass
 
-    elif platform == "Darwin":
+    elif platform.system() == "Darwin":
         pass
 
     folder_name = "Plex Media Server"
