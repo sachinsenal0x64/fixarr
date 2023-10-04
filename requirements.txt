@@ -6,7 +6,7 @@ darkdetect==0.8.0
 idna==3.4
 markdown-it-py==2.2.0
 mdurl==0.1.2
-Pillow==9.5.0
+Pillow==10.0.1
 Pygments==2.15.0
 requests==2.31.0
 rich==13.3.3
