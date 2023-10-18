@@ -11,4 +11,4 @@ Pygments==2.15.0
 requests==2.31.0
 rich==13.3.3
 tqdm==4.65.0
-urllib3==1.26.15
+urllib3==1.26.18
