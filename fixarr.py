@@ -411,7 +411,6 @@ def movie_renamer(file_or_folder):
 
     with ThreadPoolExecutor(max_workers=len(file_or_folder)) as executor:
         executor.submit(movie_renamer, *file_or_folder)
-        executor.submit(browse, file_or_folder)
 
     TOTAL_FILES_DELETED = 0
     TOTAL_FOLDERS_DELETED = 0
