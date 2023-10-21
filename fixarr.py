@@ -34,7 +34,7 @@ import rich
 from itertools import islice
 import PTN
 from thefuzz import fuzz, process
-from concurrent.features import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor
 
 
 ctk.set_appearance_mode("dark")
@@ -78,7 +78,7 @@ path_to_app_7 = path.join(budle_dir, "assets", "logout.png")
 WIDTH, HEIGHT = app.winfo_screenwidth(), app.winfo_screenheight()
 
 
-if platform.system() == "Windows":
+if os.name == "nt":
     if WIDTH == 3840 and HEIGHT == 2160:
         app.geometry("1500x900")
         ctk.set_widget_scaling(2.0)
@@ -102,7 +102,7 @@ if platform.system() == "Windows":
     app.iconbitmap(path_to_app_1)
 
 
-if platform.system() == "Linux":
+if os.name == "posix":
     if WIDTH == 3840 and HEIGHT == 2160:
         app.geometry("1500x900")
         ctk.set_widget_scaling(2.0)
@@ -409,6 +409,10 @@ def tv_browse():
 def movie_renamer(file_or_folder):
     start_time = time.perf_counter()
 
+    with ThreadPoolExecutor(max_workers=len(file_or_folder)) as executor:
+        executor.submit(movie_renamer, *file_or_folder)
+        executor.submit(browse, file_or_folder)
+
     TOTAL_FILES_DELETED = 0
     TOTAL_FOLDERS_DELETED = 0
     TOTAL_FILES_ADDED = 0
@@ -619,10 +623,6 @@ def movie_renamer(file_or_folder):
             state="normal",
             text_color="Green",
         )
-
-
-with ThreadPoolExecutorPool(max_workers=len(file_or_folder)) as executor:
-    executor.submit(movie_renamer, *file_or_folder)
 
 
 # TV RENAMER
@@ -1336,10 +1336,10 @@ if __name__ == "__main__":
         if not os.path.exists(nff):
             os.mkdir(nff)
 
-    elif platform.system() == "Linux":
+    if platform == "Linux":
         pass
 
-    elif platform.system() == "Darwin":
+    if platform == "Darwin":
         pass
 
     folder_name = "Plex Media Server"
