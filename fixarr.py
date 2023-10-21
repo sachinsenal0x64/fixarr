@@ -34,6 +34,7 @@ import rich
 from itertools import islice
 import PTN
 from thefuzz import fuzz, process
+from concurrent.features import ThreadPoolExecutor
 
 
 ctk.set_appearance_mode("dark")
@@ -618,6 +619,10 @@ def movie_renamer(file_or_folder):
             state="normal",
             text_color="Green",
         )
+
+
+with ThreadPoolExecutorPool(max_workers=len(file_or_folder)) as executor:
+    executor.submit(movie_renamer, *file_or_folder)
 
 
 # TV RENAMER
