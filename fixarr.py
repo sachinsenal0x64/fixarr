@@ -409,9 +409,6 @@ def tv_browse():
 def movie_renamer(file_or_folder):
     start_time = time.perf_counter()
 
-    with ThreadPoolExecutor(max_workers=len(file_or_folder)) as executor:
-        executor.map(movie_renamer, *file_or_folder)
-
     TOTAL_FILES_DELETED = 0
     TOTAL_FOLDERS_DELETED = 0
     TOTAL_FILES_ADDED = 0
