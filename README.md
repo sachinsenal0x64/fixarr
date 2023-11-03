@@ -43,14 +43,6 @@
 
 <br>
 
-## 🏮 NOTE
-
-## 🚀 Some Features are Still in Development :)
-
-
-<br>
-
-
 ## 🆕 BETA CHANNEL
 
 [BETA](https://github.com/sachinsenal0x64/FIXARR)
