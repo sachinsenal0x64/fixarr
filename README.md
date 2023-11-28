@@ -43,9 +43,10 @@
 
 <br>
 
-## 🆕 BETA CHANNEL
+## 🆕 CHANNELS
 
-[BETA](https://github.com/sachinsenal0x64/FIXARR)
+[BETA](https://github.com/sachinsenal0x64/FIXARR) <br>
+[STABLE](https://github.com/sachinsenal0x64/FIXARR)
 
 
 <br>
