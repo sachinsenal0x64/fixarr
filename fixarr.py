@@ -803,10 +803,17 @@ def tv_renamer(file_or_folder):
                                 str(episode), str(episode_number)
                             )
 
-                            if similarity_ratio > max_similarity_ratio:
-                                max_similarity_ratio = similarity_ratio
-                                episode_name = ep_n
-                                episode = episode_number
+                            if  similarity_ratio > max_similarity_ratio:
+                                    max_similarity_ratio = similarity_ratio
+                                    episode_name = ep_n
+                                    episode = episode_number
+
+                            
+                            elif similarity_ratio == max_similarity_ratio:
+                                    max_similarity_ratio = similarity_ratio
+                                    episode_name = ep_n
+                                    episode = episode_number
+
 
                             print(
                                 "Similarity Ratio:",
