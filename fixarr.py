@@ -781,7 +781,6 @@ def tv_renamer(file_or_folder):
 
                     # Print information about seasons and episodes
                     rich.print("Seasons:")
-
                     for season in season_data["seasons"]:
                         rich.print(
                             f"Season {season['season_number']}: {season['name']}"
@@ -822,62 +821,62 @@ def tv_renamer(file_or_folder):
                                 episode_name,
                             )
 
-                new_file_name = f"{t_name} - S{season['season_number']:02d}E{episode:02d} - {episode_name} ({t_date}){ext}"
-                rich.print(new_file_name)
+                            new_file_name = f"{t_name} - S{season['season_number']:02d}E{episode:02d} - {episode_name} ({t_date}){ext}"
+                            rich.print(new_file_name)
 
-                tv_folder = f"{t_name} ({t_date})"
-                season_folder = f"Season {season['season_number']:02d}"
+                            tv_folder = f"{t_name} ({t_date})"
+                            season_folder = f"Season {season['season_number']:02d}"
 
-                folder_path = os.path.join(file_or_folder, tv_folder)
-                season_path = os.path.join(folder_path, season_folder)
+                            folder_path = os.path.join(file_or_folder, tv_folder)
+                            season_path = os.path.join(folder_path, season_folder)
 
-                if not os.path.exists(folder_path):
-                    os.makedirs(folder_path)
+                            if not os.path.exists(folder_path):
+                                os.makedirs(folder_path)
 
-                if not os.path.exists(season_path):
-                    os.makedirs(season_path)
+                            if not os.path.exists(season_path):
+                                os.makedirs(season_path)
 
-                i = 1
+                            i = 1
 
-                # Get the old file path
-                old_file_path = os.path.join(path, name)
+                            # Get the old file path
+                            old_file_path = os.path.join(path, name)
 
-                # Create the new file path
-                new_file_path = os.path.join(season_path, new_file_name)
+                            # Create the new file path
+                            new_file_path = os.path.join(season_path, new_file_name)
 
-                tv_progressbar.start()
+                            tv_progressbar.start()
 
-            # Rename the file
-            try:
-                if not os.path.exists(new_file_path):
-                    os.rename(old_file_path, new_file_path)
+                    # Rename the file
+                    try:
+                        if not os.path.exists(new_file_path):
+                            os.rename(old_file_path, new_file_path)
 
-                else:
-                    rich.print("File Exists")
+                        else:
+                            rich.print("File Exists")
 
-            except OSError as e:
-                print(f"An error occurred while renaming the file: {e}")
-                continue
+                    except OSError as e:
+                        print(f"An error occurred while renaming the file: {e}")
+                        continue
 
-            tv_progressbar.stop()
+                    tv_progressbar.stop()
 
-            with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
-                time.sleep(1)
-                pbar.update(1)
-                tv_p = pbar.n / i * 100
-                pbar.update()
-                tv_per = str(int(tv_p))
-                tv_precent.configure(text=tv_per + "%")
-                tv_precent.update()
-                tv_progressbar.set(pbar.n / i)
-                tv_progressbar.update()
+                    with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
+                        time.sleep(1)
+                        pbar.update(1)
+                        tv_p = pbar.n / i * 100
+                        pbar.update()
+                        tv_per = str(int(tv_p))
+                        tv_precent.configure(text=tv_per + "%")
+                        tv_precent.update()
+                        tv_progressbar.set(pbar.n / i)
+                        tv_progressbar.update()
 
-            TOTAL_FILES_RENAMED += 1
+                    TOTAL_FILES_RENAMED += 1
 
-            remove_empty_directories(file_or_folder)
+                    remove_empty_directories(file_or_folder)
 
-            if FileExistsError:
-                continue
+                    if FileExistsError:
+                        continue
 
     end_time = time.perf_counter()
 
