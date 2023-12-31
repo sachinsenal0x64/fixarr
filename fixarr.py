@@ -3,39 +3,38 @@ __author__ = "sachinsenal"
 __version__ = "0.1.0"
 
 
-import re
-import pathlib
-import requests
-import json
-from os import path
-from urllib.parse import urlencode
-import os
-import shutil
 import datetime
+import json
+import os
+import pathlib
+import platform
+import re
+import shutil
+import signal
 import subprocess
 import sys
+import threading
 import time
+import tkinter as tk
+from concurrent.futures import ThreadPoolExecutor
+from itertools import islice
+from os import path
+from tkinter import filedialog, simpledialog
+from urllib.parse import urlencode
+
+import colorama
+import customtkinter as ctk
+import requests
 import rich
+from colorama import Back, Fore, Style
+from dotenv import load_dotenv
+from PIL import Image, ImageTk
 from rich.console import Console
 from rich.text import Text
-from tqdm import tqdm
-import threading
-import platform
-import signal
-from rich.console import Console
-import colorama
-from colorama import Fore, Style, Back
-import customtkinter as ctk
-from PIL import Image, ImageTk
-import tkinter as tk
-from tkinter import simpledialog, filedialog
-from dotenv import load_dotenv
-import rich
-from itertools import islice
-import PTN
 from thefuzz import fuzz, process
-from concurrent.futures import ThreadPoolExecutor
+from tqdm import tqdm
 
+import PTN
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
@@ -782,6 +781,7 @@ def tv_renamer(file_or_folder):
 
                     # Print information about seasons and episodes
                     rich.print("Seasons:")
+
                     for season in season_data["seasons"]:
                         rich.print(
                             f"Season {season['season_number']}: {season['name']}"
@@ -803,17 +803,15 @@ def tv_renamer(file_or_folder):
                                 str(episode), str(episode_number)
                             )
 
-                            if  similarity_ratio > max_similarity_ratio:
-                                    max_similarity_ratio = similarity_ratio
-                                    episode_name = ep_n
-                                    episode = episode_number
+                            if similarity_ratio > max_similarity_ratio:
+                                max_similarity_ratio = similarity_ratio
+                                episode_name = ep_n
+                                episode = episode_number
 
-                            
                             elif similarity_ratio == max_similarity_ratio:
-                                    max_similarity_ratio = similarity_ratio
-                                    episode_name = ep_n
-                                    episode = episode_number
-
+                                max_similarity_ratio = similarity_ratio
+                                episode_name = ep_n
+                                episode = episode_number
 
                             print(
                                 "Similarity Ratio:",
@@ -824,62 +822,62 @@ def tv_renamer(file_or_folder):
                                 episode_name,
                             )
 
-                        new_file_name = f"{t_name} - S{season['season_number']:02d}E{episode:02d} - {episode_name} ({t_date}){ext}"
-                        rich.print(new_file_name)
+                new_file_name = f"{t_name} - S{season['season_number']:02d}E{episode:02d} - {episode_name} ({t_date}){ext}"
+                rich.print(new_file_name)
 
-                        tv_folder = f"{t_name} ({t_date})"
-                        season_folder = f"Season {season['season_number']:02d}"
+                tv_folder = f"{t_name} ({t_date})"
+                season_folder = f"Season {season['season_number']:02d}"
 
-                        folder_path = os.path.join(file_or_folder, tv_folder)
-                        season_path = os.path.join(folder_path, season_folder)
+                folder_path = os.path.join(file_or_folder, tv_folder)
+                season_path = os.path.join(folder_path, season_folder)
 
-                        if not os.path.exists(folder_path):
-                            os.makedirs(folder_path)
+                if not os.path.exists(folder_path):
+                    os.makedirs(folder_path)
 
-                        if not os.path.exists(season_path):
-                            os.makedirs(season_path)
+                if not os.path.exists(season_path):
+                    os.makedirs(season_path)
 
-                        i = 1
+                i = 1
 
-                        # Get the old file path
-                        old_file_path = os.path.join(path, name)
+                # Get the old file path
+                old_file_path = os.path.join(path, name)
 
-                        # Create the new file path
-                        new_file_path = os.path.join(season_path, new_file_name)
+                # Create the new file path
+                new_file_path = os.path.join(season_path, new_file_name)
 
-                        tv_progressbar.start()
+                tv_progressbar.start()
 
-                        # Rename the file
-                        try:
-                            if not os.path.exists(new_file_path):
-                                os.rename(old_file_path, new_file_path)
+            # Rename the file
+            try:
+                if not os.path.exists(new_file_path):
+                    os.rename(old_file_path, new_file_path)
 
-                            else:
-                                rich.print("File Exists")
+                else:
+                    rich.print("File Exists")
 
-                        except OSError as e:
-                            print(f"An error occurred while renaming the file: {e}")
-                            continue
+            except OSError as e:
+                print(f"An error occurred while renaming the file: {e}")
+                continue
 
-                        tv_progressbar.stop()
+            tv_progressbar.stop()
 
-                        with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
-                            time.sleep(1)
-                            pbar.update(1)
-                            tv_p = pbar.n / i * 100
-                            pbar.update()
-                            tv_per = str(int(tv_p))
-                            tv_precent.configure(text=tv_per + "%")
-                            tv_precent.update()
-                            tv_progressbar.set(pbar.n / i)
-                            tv_progressbar.update()
+            with tqdm(total=i, desc="Renaming : ", unit="Files") as pbar:
+                time.sleep(1)
+                pbar.update(1)
+                tv_p = pbar.n / i * 100
+                pbar.update()
+                tv_per = str(int(tv_p))
+                tv_precent.configure(text=tv_per + "%")
+                tv_precent.update()
+                tv_progressbar.set(pbar.n / i)
+                tv_progressbar.update()
 
-                        TOTAL_FILES_RENAMED += 1
+            TOTAL_FILES_RENAMED += 1
 
-                        remove_empty_directories(file_or_folder)
+            remove_empty_directories(file_or_folder)
 
-                if FileExistsError:
-                    continue
+            if FileExistsError:
+                continue
 
     end_time = time.perf_counter()
 
