@@ -16,3 +16,4 @@ ordered-set==4.1.0
 wheel==0.38.4
 zstandard==0.20.0
 python-dotenv==1.0.0
+thefuzz==0.20.0
