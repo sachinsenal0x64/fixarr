@@ -33,11 +33,10 @@ jobs:
           cache-dependency-path: |
             **/requirements*.txt
 
-      - name: Install Tcl (if needed)
-        if: matrix.os == 'macos-latest' # Adjust for other OS if necessary
+      - name: Install Tcl
+        if: matrix.os == 'macos-latest'
         run: |
-          sudo apt-get update
-          sudo apt-get install -y tcl
+          brew install tcl
           
       - name: Install Dependencies
         run: |
