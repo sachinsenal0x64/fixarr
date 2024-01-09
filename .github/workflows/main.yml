@@ -41,7 +41,7 @@ jobs:
         with:
           nuitka-version: main
           script-name: fixarr.py
-          onefile: true
+          standalone: true
           enable-plugins: tk-inter
           windows-icon-from-ico: assets/favicon.ico
         
