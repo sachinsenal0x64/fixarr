@@ -44,6 +44,7 @@ jobs:
           onefile: true
           enable-plugins: tk-inter
           windows-icon-from-ico: assets/favicon.ico
+          include-data-dir: assets/*
         
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
