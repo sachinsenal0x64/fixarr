@@ -33,6 +33,12 @@ jobs:
           cache-dependency-path: |
             **/requirements*.txt
 
+      - name: Install Tcl (if needed)
+        if: matrix.os == 'macos-latest' # Adjust for other OS if necessary
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tcl
+          
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
