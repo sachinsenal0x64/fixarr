@@ -43,6 +43,7 @@ jobs:
           nuitka-version: main
           script-name: fixarr.py
           onefile: true
+          enable-plugins: pyside6
           windows-icon-from-ico: assets/favicon.ico
           include-data-dir: assets=./assets
         
