@@ -36,7 +36,7 @@ jobs:
       - name: Install Tcl
         if: matrix.os == 'macos-latest'
         run: |
-          brew install tcl
+          brew install tcl-tk
           
       - name: Install Dependencies
         run: |
