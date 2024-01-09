@@ -52,4 +52,4 @@ jobs:
           path: |
             build/*.exe
             build/*.bin
-            build/*.app
+            build/*.app/**/*
