@@ -44,7 +44,6 @@ jobs:
           onefile: true
           enable-plugins: tk-inter
           windows-icon-from-ico: assets/favicon.ico
-          disable-console: true
         
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
@@ -53,3 +52,4 @@ jobs:
           path: |
             build/*.exe
             build/*.bin
+            build/*.app
