@@ -45,6 +45,7 @@ jobs:
           enable-plugins: tk-inter
           windows-icon-from-ico: assets/favicon.ico
           include-data-dir: assets=./assets
+          macos-create-app-bundle: true
         
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
