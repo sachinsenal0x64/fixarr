@@ -1309,7 +1309,7 @@ del_progressbar.set(0)
 if __name__ == "__main__":
     colorama.init()
     console = Console()
-    ver = Text("\nVersion: 0.1.0")
+    ver = Text("\nVersion: 0.2.0")
     ver.stylize("bold yellow", 0, 8)
     ver.stylize("yellow", 8, 15)
     console.print("\nFIXARR", style="green_yellow")
