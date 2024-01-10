@@ -44,7 +44,7 @@
 
 ## 🆕 CHANNELS
 
-[BETA](https://github.com/sachinsenal0x64/FIXARR) <br>
+[NIGHTLY](https://github.com/sachinsenal0x64/FIXARR) <br>
 [STABLE](https://github.com/FIXARR/fixarr)
 
 
