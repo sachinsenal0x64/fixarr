@@ -111,7 +111,7 @@ For Mac OS With BREW:
 if you already not install brew then install its from offical site : https://brew.sh/#install 
 
 brew install python3
-
+brew install python-tk
 pip3 install customtkinter
 pip3 install -r requirements.txt
 python3 fixarr.py
