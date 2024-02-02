@@ -24,6 +24,7 @@
 - ❄ EMBY BACKUP (⭕ in progress)
 - ⏬ MOVIE & TV SEACHER (⭕ in progress)
 - 💎 FALLBACK SERVERS
+- ✅ CROSS PLATFORM SUPPORT
   
 <br>
 
