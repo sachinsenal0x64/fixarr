@@ -15,7 +15,7 @@ cd "${CLONE_DIR}"
 echo "Installing Packages......"
 
 # Create virtual environment
-python -m venv fixarr
+python3 -m venv fixarr
 
 # Activate virtual environment
 source fixarr/bin/activate
