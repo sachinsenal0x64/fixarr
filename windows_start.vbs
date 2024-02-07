@@ -17,5 +17,5 @@ WshShell.CurrentDirectory = cloneDir
 WScript.Echo "Installing Packages......"
 WshShell.Run "pip install -r requirements.txt", 0, True
 
-' Run fixarr.py without displaying the console window
-WshShell.Run "python fixarr.py", 0, False
+' Run fixarr.py with  displaying the console window
+WshShell.Run "python fixarr.py", 1, True
