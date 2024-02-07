@@ -10,6 +10,15 @@
 
 ![FIXARR)](https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/Screenshot_20230920_223402.4i08ima1b4s0.png)
 
+
+<br>
+
+## 🆕 CHANNELS
+
+[NIGHTLY](https://github.com/sachinsenal0x64/FIXARR) <br>
+[STABLE](https://github.com/FIXARR/fixarr)
+
+
 <br>
 
 ## 🚀 Features
@@ -40,13 +49,6 @@
 ## 👎 Cons
 
 - 🐌 Slowly Develop
-
-<br>
-
-## 🆕 CHANNELS
-
-[NIGHTLY](https://github.com/sachinsenal0x64/FIXARR) <br>
-[STABLE](https://github.com/FIXARR/fixarr)
 
 
 <br>
