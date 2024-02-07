@@ -14,4 +14,5 @@ fi
 cd "${CLONE_DIR}"
 echo "Installing Packages......"
 pip install -r requirements.txt
+chmod +x fixarr.py
 python fixarr.py
