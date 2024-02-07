@@ -13,6 +13,13 @@ fi
 
 cd "${CLONE_DIR}"
 echo "Installing Packages......"
+
+# Create virtual environment
+python -m venv fixarr
+
+# Activate virtual environment
+source fixarr/bin/activate
+
 pip install -r requirements.txt
 chmod +x fixarr.py
 python fixarr.py
