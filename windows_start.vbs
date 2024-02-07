@@ -1,7 +1,21 @@
 Set WshShell = CreateObject("WScript.Shell")
 
-' Command to run fixarr app
-fixarrCommand = "python fixarr.py"
+' Define repository URL and clone directory
+repoURL = "https://github.com/sachinsenal0x64/FIXARR"
+cloneDir = "FIXARR"
 
-' Run the command without displaying the console window
-WshShell.Run fixarrCommand, 0, False
+' Check if fixarr.py exists
+If Not objFSO.FileExists(cloneDir & "\fixarr.py") Then
+    WScript.Echo "fixarr.py does not exist. Cloning Git repository..."
+    WshShell.Run "git clone " & repoURL & " " & cloneDir, 0, True
+End If
+
+' Change to the clone directory
+WshShell.CurrentDirectory = cloneDir
+
+' Print message and install packages
+WScript.Echo "Installing Packages......"
+WshShell.Run "pip install -r requirements.txt", 0, True
+
+' Run fixarr.py without displaying the console window
+WshShell.Run "python fixarr.py", 0, False
