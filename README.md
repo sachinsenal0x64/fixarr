@@ -6,6 +6,15 @@
   <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/logov2.5sr31yyd76w0.png" width="256px" height="256px"/>
 </p>
 
+<br><br>
+
+# 💕 Community
+
+> 🍻 Join the community:  <a href="https://discord.gg/EbfftZ5Dd4">Discord</a>
+> [![](https://cdn.statically.io/gh/sachinsenal0x64/picx-images-hosting@master/discord.72y8nlaw5mdc.webp)](https://discord.gg/EbfftZ5Dd4)
+ 
+<br>
+
 # 🖼️ GUI
 
 ![FIXARR)](https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/Screenshot_20230920_223402.4i08ima1b4s0.png)
