@@ -17,7 +17,7 @@
 
 # 🖼️ GUI
 
-![FIXARR)](https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/Screenshot_20230920_223402.4i08ima1b4s0.png)
+![FIXARR)](https://sachinsenal0x64.github.io/picx-images-hosting/Screenshot_20230920_223402.4i08ima1b4s0.png)
 
 
 <br>
