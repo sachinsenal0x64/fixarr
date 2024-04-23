@@ -109,6 +109,9 @@ pip3 install customtkinter
 pip3 install -r requirements.txt
 python3 fixarr.py
 
+
+or just run .sh File
+
 ```
 
 <br>
@@ -126,6 +129,9 @@ brew install python-tk
 pip3 install customtkinter
 pip3 install -r requirements.txt
 python3 fixarr.py
+
+
+or just run .sh File
 
 ```
 
