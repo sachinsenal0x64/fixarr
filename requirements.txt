@@ -10,7 +10,7 @@ Pillow==10.3.0
 Pygments==2.15.0
 requests==2.31.0
 rich==13.3.3
-tqdm==4.65.0
+tqdm==4.66.3
 urllib3==1.26.18
 ordered-set==4.1.0
 wheel==0.38.4
