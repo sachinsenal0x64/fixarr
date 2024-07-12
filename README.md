@@ -64,7 +64,7 @@
 
 <br>
 
-## 🗝 .ENV SETUP (Important):
+## 🗝 .ENV SETUP (Optional):
 
 <br>
 
