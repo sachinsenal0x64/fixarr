@@ -43,7 +43,6 @@
 ## 💡 Pros
 
 - 🍕 Accurate Results (Even Torrent Movies Can Rename Without Any Issue)
-- 🆓 Fully Free And Open Source
 - 🧰 All in One Place
 - 🧾 Easy to Use
 
