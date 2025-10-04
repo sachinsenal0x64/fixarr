@@ -35,7 +35,6 @@
 - ♻ PURG UNNECESSARY FILES (NFO,SRT)
 - 🐟 JELLYFIN BACKUP (⭕ in progress)
 - ❄ EMBY BACKUP (⭕ in progress)
-- ⏬ MOVIE & TV SEACHER (⭕ in progress)
 - 💎 FALLBACK SERVERS
 - ✅ CROSS PLATFORM SUPPORT
   
