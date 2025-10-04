@@ -29,14 +29,14 @@
 
 - 🎬 MOVIE RENAMER
 - 📺 TV RENAMER
-- 👧 ANIME RENAMER (⭕ in progress)
 - 🔺 PLEX BACKUP
 - ⚡️ MULTI THREADING
 - ♻ PURG UNNECESSARY FILES (NFO,SRT)
-- 🐟 JELLYFIN BACKUP (⭕ in progress)
-- ❄ EMBY BACKUP (⭕ in progress)
 - 💎 FALLBACK SERVERS
 - ✅ CROSS PLATFORM SUPPORT
+- 👧 ANIME RENAMER (⭕ in progress)
+- 🐟 JELLYFIN BACKUP (⭕ in progress)
+- ❄ EMBY BACKUP (⭕ in progress)
   
 <br>
 
