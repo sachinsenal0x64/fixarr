@@ -7,6 +7,10 @@
 
 <h1 align="center"> 🛠️ FIXARR  </h1>
 
+# 🖼️ GUI
+
+![FIXARR)](https://sachinsenal0x64.github.io/picx-images-hosting/Screenshot_20230920_223402.4i08ima1b4s0.png)
+
 <h4 align="center"> 🍿 Ultimate Movie | TV | Anime Renamer with Backup Media Servers (Plex | Emby | Jellyfin)</h4>
 
 <br><br>
@@ -18,12 +22,7 @@
  
 <br>
 
-# 🖼️ GUI
 
-![FIXARR)](https://sachinsenal0x64.github.io/picx-images-hosting/Screenshot_20230920_223402.4i08ima1b4s0.png)
-
-
-<br>
 
 ## 🚀 Features
 
