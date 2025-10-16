@@ -1,3 +1,38 @@
+## Quick Setup (macOS/Linux)
+
+### 1. Clone
+```bash
+git clone https://github.com/sachinsenal0x64/fixarr.git
+cd fixarr
+```
+
+### 2. Install Python 3.12 + Tk
+```bash
+brew install python@3.12 python-tk@3.12
+```
+
+### 3. Create Virtual Environment
+```bash
+python3.12 -m venv venv
+source venv/bin/activate
+```
+
+### 4. Install Dependencies
+```bash
+pip install setuptools
+pip install -r requirements.txt
+```
+
+### 5. Run
+```bash
+python fixarr.py
+```
+
+Tested working on macOS Sonoma (Python 3.12, Tkinter)
+No more missing Tkinter or distutils errors.
+
+---
+
 > [!NOTE]  
 > I haven't released the new update yet, but the tool is working fine. If you face any issues, join our Discord using the link below.
 
@@ -5,7 +40,7 @@
   <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/logov2.5sr31yyd76w0.png" width="256px" height="256px"/>
 </p>
 
-<h1 align="center"> 🛠️ FIXARR  </h1>
+<h1 align="center"> FIXARR  </h1>
 
 # 🖼️ GUI
 
@@ -109,7 +144,7 @@ or just run .sh File
 
 <br>
 
-🍎 For macOS :
+For macOS :
 
 ```Terminal
 
@@ -117,11 +152,17 @@ For Mac OS With BREW:
 
 if you already not install brew then install its from offical site : https://brew.sh/#install 
 
-brew install python3
-brew install python-tk
-pip3 install customtkinter
-pip3 install -r requirements.txt
-python3 fixarr.py
+# Install Python 3.12 and Tkinter
+brew install python@3.12 python-tk@3.12
+
+# Create virtual environment
+python3.12 -m venv venv
+source venv/bin/activate
+
+# Install setuptools (replaces distutils removed in Python 3.12)
+pip install setuptools
+pip install -r requirements.txt
+python3.12 fixarr.py
 
 
 or just run .sh File
