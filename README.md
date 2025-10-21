@@ -112,11 +112,11 @@ No more missing Tkinter or distutils errors.
 
 <br>
 
-🐧For GNU/Linux :
+For GNU/Linux :
 
 ```Terminal
 
-🐧 Debian Based Distros :
+ Debian Based Distros :
 
 sudo apt-get install software-properties-common
 sudo apt-get install python3.10
@@ -127,7 +127,7 @@ pip3 install -r requirements.txt
 python3 fixarr.py
 
 
-🐧 Fedora Based Distros:
+Fedora Based Distros:
 
 sudo dnf install python3
 pip3 install customtkinter
@@ -169,7 +169,7 @@ or just run .sh File
 
 <br>
 
-🚪 For Windows:
+For Windows:
 
 ```CMD
 First Install Python (python.org) 
@@ -182,8 +182,7 @@ or just run .bat File also you can create bat_shortcut
 ```
 
 <br>
-
-## 🏮 NOTE
+>Note
 
 <br>
 
@@ -204,8 +203,6 @@ nuitka --mingw64 --standalone --windows-icon-from-ico=./assets/favicon.ico --inc
 ```
 
 ### GNU/LINUX
-
-
 
 ```
 nuitka3 --clang --standalone --windows-icon-from-ico=./assets/favicon.ico --include-data-dir=./assets=./assets --windows-company-name=FIXARR --product-name=FIXARR --product-version=0.1.0  --file-version=0.1.0 --plugin-enable=tk-inter -o fixarr.bin fixarr.py
