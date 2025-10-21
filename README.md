@@ -1,38 +1,3 @@
-## Quick Setup (macOS/Linux)
-
-### 1. Clone
-```bash
-git clone https://github.com/sachinsenal0x64/fixarr.git
-cd fixarr
-```
-
-### 2. Install Python 3.12 + Tk
-```bash
-brew install python@3.12 python-tk@3.12
-```
-
-### 3. Create Virtual Environment
-```bash
-python3.12 -m venv venv
-source venv/bin/activate
-```
-
-### 4. Install Dependencies
-```bash
-pip install setuptools
-pip install -r requirements.txt
-```
-
-### 5. Run
-```bash
-python fixarr.py
-```
-
-Tested working on macOS Sonoma (Python 3.12, Tkinter)
-No more missing Tkinter or distutils errors.
-
----
-
 > [!NOTE]  
 > I haven't released the new update yet, but the tool is working fine. If you face any issues, join our Discord using the link below.
 
@@ -47,6 +12,8 @@ No more missing Tkinter or distutils errors.
 ![FIXARR)](https://sachinsenal0x64.github.io/picx-images-hosting/Screenshot_20230920_223402.4i08ima1b4s0.png)
 
 <h4 align="center"> 🍿 Ultimate Movie | TV | Anime Renamer with Backup Media Servers (Plex | Emby | Jellyfin)</h4>
+
+
 
 <br><br>
 
@@ -91,16 +58,10 @@ No more missing Tkinter or distutils errors.
 
 # 📐 INSTALLATION
 
-<br>
-
-
-# 💻 From Source [MODE: HARD]
 
 <br>
 
 ## 🗝 .ENV SETUP (Optional):
-
-<br>
 
 >Optional
 
@@ -111,6 +72,43 @@ No more missing Tkinter or distutils errors.
 ```
 TMDB_API_KEY=tmdbkey
 ```
+
+<br>
+
+## Quick Setup (macOS/Linux)
+
+### 1. Clone
+```bash
+git clone https://github.com/sachinsenal0x64/fixarr.git
+cd fixarr
+```
+
+### 2. Install Python 3.12 + Tk
+```bash
+brew install python@3.12 python-tk@3.12
+```
+
+### 3. Create Virtual Environment
+```bash
+python3.12 -m venv venv
+source venv/bin/activate
+```
+
+### 4. Install Dependencies
+```bash
+pip install setuptools
+pip install -r requirements.txt
+```
+
+### 5. Run
+```bash
+python fixarr.py
+```
+
+Tested working on macOS Sonoma (Python 3.12, Tkinter)
+No more missing Tkinter or distutils errors.
+
+---
 
 <br>
 
