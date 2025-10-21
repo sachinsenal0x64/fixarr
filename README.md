@@ -116,7 +116,7 @@ For GNU/Linux :
 
 ```Terminal
 
- Debian Based Distros :
+Debian Based Distros :
 
 sudo apt-get install software-properties-common
 sudo apt-get install python3.10
@@ -185,10 +185,7 @@ or just run .bat File also you can create bat_shortcut
 
 >Note
 
-<br>
-
 #### IF YOU WANT TO MAKE OWN STANDALONE APP (AKA .EXE or .BIN) USE NUITKA TO COMPILE SOURCE CODE INTO C 
-<br>
 
 ### WINDOWS
 
