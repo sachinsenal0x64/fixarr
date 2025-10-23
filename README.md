@@ -1,10 +1,6 @@
 > [!NOTE]  
 > I haven't released the new update yet, but the tool is working fine. If you face any issues, join our Discord using the link below.
 
-<p style="text-align:center;" align="center">
-  <img align="center" src="https://cdn.jsdelivr.net/gh/sachinsenal0x64/picx-images-hosting@master/logov2.5sr31yyd76w0.png" width="256px" height="256px"/>
-</p>
-
 <h1 align="center"> FIXARR  </h1>
 
 # 🖼️ GUI
