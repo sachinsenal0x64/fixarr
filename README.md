@@ -1,5 +1,5 @@
 > [!NOTE]  
-> I haven't released the new update yet, but the tool is working fine. If you face any issues, join our Discord using the link below.
+> I haven’t released the new update yet, but the tool is working fine. If you run into any issues, please open a GitHub issue. You can also join our Discord using the link below.
 
 <h1 align="center"> FIXARR  </h1>
 
